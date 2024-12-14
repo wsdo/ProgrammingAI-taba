@@ -1,0 +1,1420 @@
+{
+    "summary_statistics": {
+        "year": {
+            "count": 3672,
+            "mean": 2006.5,
+            "std": 9.812044588865904,
+            "min": 1990.0,
+            "q1": 1998.0,
+            "median": 2006.5,
+            "q3": 2015.0,
+            "max": 2023.0,
+            "skewness": 0.0,
+            "kurtosis": -1.202077922077922,
+            "missing_values": 0
+        },
+        "education_expenditure.total_gdp_percentage": {
+            "count": 3672,
+            "mean": 5.4925027233115475,
+            "std": 0.8600172152073159,
+            "min": 4.0,
+            "q1": 4.75,
+            "median": 5.48,
+            "q3": 6.24,
+            "max": 7.0,
+            "skewness": 0.015571364705371899,
+            "kurtosis": -1.1703257081695255,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_primary": {
+            "count": 3672,
+            "mean": 8527.154956427015,
+            "std": 865.5061752983912,
+            "min": 7000.0,
+            "q1": 7785.5,
+            "median": 8543.0,
+            "q3": 9275.25,
+            "max": 10000.0,
+            "skewness": -0.025251976488395222,
+            "kurtosis": -1.186208143219127,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_secondary": {
+            "count": 3672,
+            "mean": 9989.23665577342,
+            "std": 1171.1748081784974,
+            "min": 8000.0,
+            "q1": 8978.0,
+            "median": 9987.0,
+            "q3": 11014.25,
+            "max": 11999.0,
+            "skewness": -0.0073073159213980655,
+            "kurtosis": -1.236946200977553,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_tertiary": {
+            "count": 3672,
+            "mean": 12486.436274509804,
+            "std": 1436.5469367058015,
+            "min": 10002.0,
+            "q1": 11242.0,
+            "median": 12475.5,
+            "q3": 13705.25,
+            "max": 14994.0,
+            "skewness": 0.019400473622911377,
+            "kurtosis": -1.1963297015143577,
+            "missing_values": 0
+        },
+        "education_expenditure.research_development": {
+            "count": 3672,
+            "mean": 2.254550653594771,
+            "std": 0.42996431930493473,
+            "min": 1.5,
+            "q1": 1.89,
+            "median": 2.25,
+            "q3": 2.62,
+            "max": 3.0,
+            "skewness": -0.005357916588439263,
+            "kurtosis": -1.1776263004819911,
+            "missing_values": 0
+        },
+        "education_expenditure.infrastructure_investment": {
+            "count": 3672,
+            "mean": 1242.9711328976034,
+            "std": 430.9898551329047,
+            "min": 501.0,
+            "q1": 875.0,
+            "median": 1247.0,
+            "q3": 1610.0,
+            "max": 2000.0,
+            "skewness": -0.0005089610348763576,
+            "kurtosis": -1.1776442544395795,
+            "missing_values": 0
+        },
+        "education_expenditure.teacher_training_budget": {
+            "count": 3672,
+            "mean": 497.15305010893246,
+            "std": 173.57054746052805,
+            "min": 200.0,
+            "q1": 345.0,
+            "median": 493.0,
+            "q3": 647.25,
+            "max": 800.0,
+            "skewness": 0.04015941122888342,
+            "kurtosis": -1.2026158891054313,
+            "missing_values": 0
+        },
+        "education_expenditure.digital_resources_budget": {
+            "count": 3672,
+            "mean": 649.2249455337691,
+            "std": 202.7907782752219,
+            "min": 300.0,
+            "q1": 473.0,
+            "median": 649.0,
+            "q3": 828.0,
+            "max": 999.0,
+            "skewness": 0.02279507588388117,
+            "kurtosis": -1.189284664845075,
+            "missing_values": 0
+        },
+        "education_expenditure.special_education_funding": {
+            "count": 3672,
+            "mean": 792.5923202614379,
+            "std": 230.2098320982922,
+            "min": 400.0,
+            "q1": 596.75,
+            "median": 785.5,
+            "q3": 989.25,
+            "max": 1200.0,
+            "skewness": 0.04818582417282659,
+            "kurtosis": -1.1796767256785723,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_primary": {
+            "count": 3672,
+            "mean": 98.49196623093682,
+            "std": 0.8603517433346427,
+            "min": 97.0,
+            "q1": 97.7,
+            "median": 98.5,
+            "q3": 99.2,
+            "max": 100.0,
+            "skewness": 0.00400221590676084,
+            "kurtosis": -1.1735109039984004,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_secondary": {
+            "count": 3672,
+            "mean": 93.98001089324617,
+            "std": 2.319733591043248,
+            "min": 90.0,
+            "q1": 92.0,
+            "median": 94.0,
+            "q3": 96.0,
+            "max": 98.0,
+            "skewness": 0.022403832239609102,
+            "kurtosis": -1.2053714913455942,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_tertiary": {
+            "count": 3672,
+            "mean": 62.470288671023965,
+            "std": 7.169185332466115,
+            "min": 50.0,
+            "q1": 56.3,
+            "median": 62.5,
+            "q3": 68.6,
+            "max": 75.0,
+            "skewness": 0.01585839449562547,
+            "kurtosis": -1.197531728301692,
+            "missing_values": 0
+        },
+        "education_participation.dropout_rate": {
+            "count": 3672,
+            "mean": 10.062118736383441,
+            "std": 2.907791162719642,
+            "min": 5.0,
+            "q1": 7.5,
+            "median": 10.1,
+            "q3": 12.6,
+            "max": 15.0,
+            "skewness": -0.036889756699448925,
+            "kurtosis": -1.2289256348822615,
+            "missing_values": 0
+        },
+        "education_participation.international_student_percentage": {
+            "count": 3672,
+            "mean": 11.079874727668846,
+            "std": 5.18781556440255,
+            "min": 2.0,
+            "q1": 6.7,
+            "median": 11.1,
+            "q3": 15.6,
+            "max": 20.0,
+            "skewness": -0.0028576999473338876,
+            "kurtosis": -1.193170425029574,
+            "missing_values": 0
+        },
+        "education_participation.special_needs_student_integration": {
+            "count": 3672,
+            "mean": 84.85955882352943,
+            "std": 8.709231435652244,
+            "min": 70.0,
+            "q1": 77.3,
+            "median": 84.9,
+            "q3": 92.5,
+            "max": 100.0,
+            "skewness": 0.01037382534990839,
+            "kurtosis": -1.2188398770234485,
+            "missing_values": 0
+        },
+        "education_participation.adult_education_participation": {
+            "count": 3672,
+            "mean": 24.974237472766884,
+            "std": 8.64653496140016,
+            "min": 10.0,
+            "q1": 17.6,
+            "median": 24.7,
+            "q3": 32.5,
+            "max": 40.0,
+            "skewness": 0.0324212058901551,
+            "kurtosis": -1.1999970139625735,
+            "missing_values": 0
+        },
+        "education_participation.vocational_training_enrollment": {
+            "count": 3672,
+            "mean": 34.86772875816993,
+            "std": 8.688350094537675,
+            "min": 20.0,
+            "q1": 27.275,
+            "median": 34.75,
+            "q3": 42.5,
+            "max": 50.0,
+            "skewness": 0.034504461891775376,
+            "kurtosis": -1.2098848508420168,
+            "missing_values": 0
+        },
+        "education_quality.teacher_qualification_index": {
+            "count": 3672,
+            "mean": 0.8239079520697169,
+            "std": 0.07267999081250262,
+            "min": 0.7,
+            "q1": 0.76,
+            "median": 0.83,
+            "q3": 0.89,
+            "max": 0.95,
+            "skewness": -0.008162648076183778,
+            "kurtosis": -1.2100861678203394,
+            "missing_values": 0
+        },
+        "education_quality.average_class_size": {
+            "count": 3672,
+            "mean": 23.054193899782135,
+            "std": 2.907181922792263,
+            "min": 18.0,
+            "q1": 21.0,
+            "median": 23.0,
+            "q3": 26.0,
+            "max": 28.0,
+            "skewness": -0.012018189491400707,
+            "kurtosis": -1.1459641037104833,
+            "missing_values": 0
+        },
+        "education_quality.teaching_hours_yearly": {
+            "count": 3672,
+            "mean": 898.5479302832244,
+            "std": 58.30081855190276,
+            "min": 800.0,
+            "q1": 847.0,
+            "median": 898.0,
+            "q3": 949.0,
+            "max": 1000.0,
+            "skewness": 0.031227769393658306,
+            "kurtosis": -1.2155018384583782,
+            "missing_values": 0
+        },
+        "education_quality.digital_learning_percentage": {
+            "count": 3672,
+            "mean": 45.14297385620915,
+            "std": 8.769358299275103,
+            "min": 30.0,
+            "q1": 38.0,
+            "median": 45.0,
+            "q3": 53.0,
+            "max": 60.0,
+            "skewness": 0.003741422916770096,
+            "kurtosis": -1.222633346683961,
+            "missing_values": 0
+        },
+        "education_quality.student_satisfaction_score": {
+            "count": 3672,
+            "mean": 4.029166666666667,
+            "std": 0.5751188689563083,
+            "min": 3.0,
+            "q1": 3.5,
+            "median": 4.05,
+            "q3": 4.5,
+            "max": 5.0,
+            "skewness": -0.07099802870402076,
+            "kurtosis": -1.1800532862462334,
+            "missing_values": 0
+        },
+        "education_quality.graduate_employment_rate": {
+            "count": 3672,
+            "mean": 77.55220588235296,
+            "std": 10.050683085789272,
+            "min": 60.0,
+            "q1": 69.1,
+            "median": 77.4,
+            "q3": 86.3,
+            "max": 95.0,
+            "skewness": 0.011093062736996048,
+            "kurtosis": -1.1707572482000046,
+            "missing_values": 0
+        },
+        "education_quality.research_publication_index": {
+            "count": 3672,
+            "mean": 1.2605909586056643,
+            "std": 0.4316244955442885,
+            "min": 0.5,
+            "q1": 0.89,
+            "median": 1.27,
+            "q3": 1.64,
+            "max": 2.0,
+            "skewness": -0.03782809570161418,
+            "kurtosis": -1.2034169677720126,
+            "missing_values": 0
+        },
+        "education_quality.international_ranking_score": {
+            "count": 3672,
+            "mean": 74.67837690631808,
+            "std": 14.517211561607786,
+            "min": 50.0,
+            "q1": 62.0,
+            "median": 75.0,
+            "q3": 87.0,
+            "max": 100.0,
+            "skewness": 0.02364399368828712,
+            "kurtosis": -1.2291580283092278,
+            "missing_values": 0
+        },
+        "education_resources.student_teacher_ratio_primary": {
+            "count": 3672,
+            "mean": 16.052369281045753,
+            "std": 2.32207551577643,
+            "min": 12.0,
+            "q1": 14.0,
+            "median": 16.1,
+            "q3": 18.1,
+            "max": 20.0,
+            "skewness": -0.042827650911826366,
+            "kurtosis": -1.2054969097652086,
+            "missing_values": 0
+        },
+        "education_resources.student_teacher_ratio_secondary": {
+            "count": 3672,
+            "mean": 12.488943355119824,
+            "std": 1.4453573181852923,
+            "min": 10.0,
+            "q1": 11.2,
+            "median": 12.5,
+            "q3": 13.7,
+            "max": 15.0,
+            "skewness": 0.005397256187422962,
+            "kurtosis": -1.1887528339881483,
+            "missing_values": 0
+        },
+        "education_resources.teacher_salary_index": {
+            "count": 3672,
+            "mean": 125.12554466230937,
+            "std": 14.364776564592319,
+            "min": 100.0,
+            "q1": 113.0,
+            "median": 125.0,
+            "q3": 138.0,
+            "max": 150.0,
+            "skewness": -0.013680201306406407,
+            "kurtosis": -1.2054306943696382,
+            "missing_values": 0
+        },
+        "education_resources.digital_resources_investment": {
+            "count": 3672,
+            "mean": 750.4082244008714,
+            "std": 144.85748270158467,
+            "min": 500.0,
+            "q1": 627.0,
+            "median": 750.5,
+            "q3": 876.0,
+            "max": 1000.0,
+            "skewness": 0.0021154476119971707,
+            "kurtosis": -1.1844048170522592,
+            "missing_values": 0
+        },
+        "education_resources.classroom_technology_level": {
+            "count": 3672,
+            "mean": 2.966394335511983,
+            "std": 1.1494592739400529,
+            "min": 1.0,
+            "q1": 2.0,
+            "median": 2.9,
+            "q3": 4.0,
+            "max": 5.0,
+            "skewness": 0.032836545116690805,
+            "kurtosis": -1.1927051174428556,
+            "missing_values": 0
+        },
+        "education_resources.library_resources_per_student": {
+            "count": 3672,
+            "mean": 59.95778867102396,
+            "std": 23.197448509199624,
+            "min": 20.0,
+            "q1": 40.0,
+            "median": 60.0,
+            "q3": 80.0,
+            "max": 100.0,
+            "skewness": 0.0075605633178298555,
+            "kurtosis": -1.2057633327924058,
+            "missing_values": 0
+        },
+        "education_resources.laboratory_equipment_index": {
+            "count": 3672,
+            "mean": 0.7479765795206971,
+            "std": 0.1434640382129807,
+            "min": 0.5,
+            "q1": 0.63,
+            "median": 0.75,
+            "q3": 0.87,
+            "max": 1.0,
+            "skewness": 0.003125788763624463,
+            "kurtosis": -1.169485529390212,
+            "missing_values": 0
+        },
+        "education_resources.sports_facilities_rating": {
+            "count": 3672,
+            "mean": 2.9841503267973852,
+            "std": 1.1514156422462622,
+            "min": 1.0,
+            "q1": 2.0,
+            "median": 3.0,
+            "q3": 4.0,
+            "max": 5.0,
+            "skewness": -0.0020330266587212814,
+            "kurtosis": -1.1954958723893905,
+            "missing_values": 0
+        },
+        "education_expenditure.total_gdp_percentage_normalized": {
+            "count": 3672,
+            "mean": 0.4975009077705156,
+            "std": 0.2866724050691053,
+            "min": 0.0,
+            "q1": 0.25,
+            "median": 0.4933333333333334,
+            "q3": 0.7466666666666667,
+            "max": 1.0,
+            "skewness": 0.01557136470537442,
+            "kurtosis": -1.1703257081695264,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_primary_normalized": {
+            "count": 3672,
+            "mean": 0.5090516521423385,
+            "std": 0.2885020584327971,
+            "min": 0.0,
+            "q1": 0.26183333333333336,
+            "median": 0.5143333333333333,
+            "q3": 0.7584166666666666,
+            "max": 1.0,
+            "skewness": -0.02525197648839588,
+            "kurtosis": -1.1862081432191265,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_secondary_normalized": {
+            "count": 3672,
+            "mean": 0.49743352232393606,
+            "std": 0.292866918774318,
+            "min": 0.0,
+            "q1": 0.2445611402850712,
+            "median": 0.4968742185546386,
+            "q3": 0.7537509377344336,
+            "max": 1.0,
+            "skewness": -0.007307315921398161,
+            "kurtosis": -1.236946200977553,
+            "missing_values": 0
+        },
+        "education_expenditure.per_student_tertiary_normalized": {
+            "count": 3672,
+            "mean": 0.49768354857968833,
+            "std": 0.2877698190516429,
+            "min": 0.0,
+            "q1": 0.2483974358974359,
+            "median": 0.49549278846153844,
+            "q3": 0.7418369391025641,
+            "max": 1.0,
+            "skewness": 0.019400473622911328,
+            "kurtosis": -1.196329701514357,
+            "missing_values": 0
+        },
+        "education_expenditure.research_development_normalized": {
+            "count": 3672,
+            "mean": 0.5030337690631808,
+            "std": 0.28664287953662315,
+            "min": 0.0,
+            "q1": 0.2599999999999999,
+            "median": 0.5,
+            "q3": 0.7466666666666667,
+            "max": 1.0,
+            "skewness": -0.005357916588441695,
+            "kurtosis": -1.1776263004819916,
+            "missing_values": 0
+        },
+        "education_resources.student_teacher_ratio_primary_normalized": {
+            "count": 3672,
+            "mean": 0.506546160130719,
+            "std": 0.2902594394720538,
+            "min": 0.0,
+            "q1": 0.25,
+            "median": 0.5125000000000002,
+            "q3": 0.7625000000000002,
+            "max": 1.0,
+            "skewness": -0.04282765091182539,
+            "kurtosis": -1.2054969097652093,
+            "missing_values": 0
+        },
+        "education_resources.student_teacher_ratio_secondary_normalized": {
+            "count": 3672,
+            "mean": 0.4977886710239652,
+            "std": 0.2890714636370585,
+            "min": 0.0,
+            "q1": 0.2399999999999998,
+            "median": 0.5,
+            "q3": 0.7399999999999999,
+            "max": 1.0,
+            "skewness": 0.005397256187419121,
+            "kurtosis": -1.188752833988149,
+            "missing_values": 0
+        },
+        "education_resources.teacher_salary_index_normalized": {
+            "count": 3672,
+            "mean": 0.5025108932461874,
+            "std": 0.2872955312918464,
+            "min": 0.0,
+            "q1": 0.26,
+            "median": 0.5,
+            "q3": 0.76,
+            "max": 1.0,
+            "skewness": -0.013680201306406861,
+            "kurtosis": -1.2054306943696382,
+            "missing_values": 0
+        },
+        "education_resources.digital_resources_investment_normalized": {
+            "count": 3672,
+            "mean": 0.5008164488017429,
+            "std": 0.2897149654031694,
+            "min": 0.0,
+            "q1": 0.254,
+            "median": 0.501,
+            "q3": 0.752,
+            "max": 1.0,
+            "skewness": 0.0021154476119959937,
+            "kurtosis": -1.18440481705226,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_primary_normalized": {
+            "count": 3672,
+            "mean": 0.4973220769789397,
+            "std": 0.2867839144448809,
+            "min": 0.0,
+            "q1": 0.2333333333333342,
+            "median": 0.5,
+            "q3": 0.7333333333333343,
+            "max": 1.0,
+            "skewness": 0.004002215906780777,
+            "kurtosis": -1.1735109039984,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_secondary_normalized": {
+            "count": 3672,
+            "mean": 0.49750136165577336,
+            "std": 0.289966698880406,
+            "min": 0.0,
+            "q1": 0.25,
+            "median": 0.5,
+            "q3": 0.75,
+            "max": 1.0,
+            "skewness": 0.022403832239592296,
+            "kurtosis": -1.2053714913455944,
+            "missing_values": 0
+        },
+        "education_participation.enrollment_rate_tertiary_normalized": {
+            "count": 3672,
+            "mean": 0.4988115468409586,
+            "std": 0.2867674132986446,
+            "min": 0.0,
+            "q1": 0.2519999999999999,
+            "median": 0.5,
+            "q3": 0.7439999999999998,
+            "max": 1.0,
+            "skewness": 0.01585839449562565,
+            "kurtosis": -1.1975317283016924,
+            "missing_values": 0
+        },
+        "education_participation.dropout_rate_normalized": {
+            "count": 3672,
+            "mean": 0.5062118736383442,
+            "std": 0.29077911627196423,
+            "min": 0.0,
+            "q1": 0.25,
+            "median": 0.51,
+            "q3": 0.76,
+            "max": 1.0,
+            "skewness": -0.03688975669944981,
+            "kurtosis": -1.2289256348822617,
+            "missing_values": 0
+        },
+        "education_quality.teacher_qualification_index_normalized": {
+            "count": 3672,
+            "mean": 0.4956318082788672,
+            "std": 0.29071996325001054,
+            "min": 0.0,
+            "q1": 0.2400000000000002,
+            "median": 0.52,
+            "q3": 0.7600000000000002,
+            "max": 1.0,
+            "skewness": -0.008162648076178294,
+            "kurtosis": -1.2100861678203398,
+            "missing_values": 0
+        },
+        "education_quality.average_class_size_normalized": {
+            "count": 3672,
+            "mean": 0.5054193899782136,
+            "std": 0.29071819227922635,
+            "min": 0.0,
+            "q1": 0.3,
+            "median": 0.5,
+            "q3": 0.8,
+            "max": 1.0,
+            "skewness": -0.01201818949140167,
+            "kurtosis": -1.1459641037104846,
+            "missing_values": 0
+        },
+        "education_quality.teaching_hours_yearly_normalized": {
+            "count": 3672,
+            "mean": 0.49273965141612197,
+            "std": 0.2915040927595138,
+            "min": 0.0,
+            "q1": 0.235,
+            "median": 0.49,
+            "q3": 0.745,
+            "max": 1.0,
+            "skewness": 0.031227769393661002,
+            "kurtosis": -1.215501838458378,
+            "missing_values": 0
+        },
+        "education_quality.digital_learning_percentage_normalized": {
+            "count": 3672,
+            "mean": 0.5047657952069716,
+            "std": 0.29231194330917015,
+            "min": 0.0,
+            "q1": 0.2666666666666666,
+            "median": 0.5,
+            "q3": 0.7666666666666667,
+            "max": 1.0,
+            "skewness": 0.003741422916771471,
+            "kurtosis": -1.2226333466839623,
+            "missing_values": 0
+        },
+        "total_investment_per_student": {
+            "count": 3672,
+            "mean": 10334.275962236747,
+            "std": 674.8088816569101,
+            "min": 8508.333333333334,
+            "q1": 9853.5,
+            "median": 10338.666666666668,
+            "q3": 10822.166666666666,
+            "max": 12221.333333333334,
+            "skewness": -0.008920055569232059,
+            "kurtosis": -0.46967704786695696,
+            "missing_values": 0
+        },
+        "overall_quality_score": {
+            "count": 3672,
+            "mean": 93.92399192084241,
+            "std": 5.1478848952663165,
+            "min": 82.5511111111111,
+            "q1": 89.71791666666665,
+            "median": 93.96708333333333,
+            "q3": 98.13541666666664,
+            "max": 106.47166666666668,
+            "skewness": 0.025962222408227813,
+            "kurtosis": -0.9882999528096965,
+            "missing_values": 0
+        }
+    },
+    "categorical_analysis": {
+        "country": {
+            "unique_values": 27,
+            "most_common": "AT",
+            "most_common_count": 136,
+            "least_common": "SE",
+            "least_common_count": 136,
+            "missing_values": 0
+        },
+        "quarter": {
+            "unique_values": 4,
+            "most_common": "Q1",
+            "most_common_count": 918,
+            "least_common": "Q4",
+            "least_common_count": 918,
+            "missing_values": 0
+        },
+        "last_updated": {
+            "unique_values": 698,
+            "most_common": "2024-12-14 14:21:57.507000",
+            "most_common_count": 8,
+            "least_common": "2024-12-14 14:21:56.929000",
+            "least_common_count": 1,
+            "missing_values": 0
+        },
+        "time_period": {
+            "unique_values": 136,
+            "most_common": "1990-Q1",
+            "most_common_count": 27,
+            "least_common": "2023-Q4",
+            "least_common_count": 27,
+            "missing_values": 0
+        }
+    },
+    "distribution_analysis": {
+        "year": {
+            "normality_test_p_value": 7.090861832608961e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.total_gdp_percentage": {
+            "normality_test_p_value": 2.2520552061971775e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_primary": {
+            "normality_test_p_value": 4.7822243965890236e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_secondary": {
+            "normality_test_p_value": 1.7174238971467775e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_tertiary": {
+            "normality_test_p_value": 3.925690837148168e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.research_development": {
+            "normality_test_p_value": 1.501782821074782e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.infrastructure_investment": {
+            "normality_test_p_value": 1.0513868362410594e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.teacher_training_budget": {
+            "normality_test_p_value": 1.587388984358342e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.digital_resources_budget": {
+            "normality_test_p_value": 3.2863986588529755e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.special_education_funding": {
+            "normality_test_p_value": 6.090230732721493e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_primary": {
+            "normality_test_p_value": 9.006627349448751e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_secondary": {
+            "normality_test_p_value": 1.4277575455662338e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_tertiary": {
+            "normality_test_p_value": 5.65751382252521e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.dropout_rate": {
+            "normality_test_p_value": 3.340750870310641e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.international_student_percentage": {
+            "normality_test_p_value": 4.000092735747555e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.special_needs_student_integration": {
+            "normality_test_p_value": 7.371219266680022e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.adult_education_participation": {
+            "normality_test_p_value": 2.7410883077271645e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.vocational_training_enrollment": {
+            "normality_test_p_value": 1.1699735986049248e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.teacher_qualification_index": {
+            "normality_test_p_value": 3.7974739421777834e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.average_class_size": {
+            "normality_test_p_value": 1.1756423282605388e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.teaching_hours_yearly": {
+            "normality_test_p_value": 5.912596333707972e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.digital_learning_percentage": {
+            "normality_test_p_value": 3.0394244692291707e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.student_satisfaction_score": {
+            "normality_test_p_value": 1.249103514297283e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.graduate_employment_rate": {
+            "normality_test_p_value": 1.3442517062217121e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.research_publication_index": {
+            "normality_test_p_value": 2.1004601509485625e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.international_ranking_score": {
+            "normality_test_p_value": 3.6535054164426005e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.student_teacher_ratio_primary": {
+            "normality_test_p_value": 1.477227279682243e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.student_teacher_ratio_secondary": {
+            "normality_test_p_value": 3.306255878512569e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.teacher_salary_index": {
+            "normality_test_p_value": 2.701866745930641e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.digital_resources_investment": {
+            "normality_test_p_value": 4.6583010538976195e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.classroom_technology_level": {
+            "normality_test_p_value": 3.6135432320053827e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.library_resources_per_student": {
+            "normality_test_p_value": 1.44782768084835e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.laboratory_equipment_index": {
+            "normality_test_p_value": 1.2106090039970734e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.sports_facilities_rating": {
+            "normality_test_p_value": 3.4014177921838374e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.total_gdp_percentage_normalized": {
+            "normality_test_p_value": 2.252055206196533e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_primary_normalized": {
+            "normality_test_p_value": 4.7822243965903926e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_secondary_normalized": {
+            "normality_test_p_value": 1.7174238971467775e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.per_student_tertiary_normalized": {
+            "normality_test_p_value": 3.925690837148168e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_expenditure.research_development_normalized": {
+            "normality_test_p_value": 1.501782821074782e-31,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.student_teacher_ratio_primary_normalized": {
+            "normality_test_p_value": 1.477227279682243e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.student_teacher_ratio_secondary_normalized": {
+            "normality_test_p_value": 3.306255878513374e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.teacher_salary_index_normalized": {
+            "normality_test_p_value": 2.701866745931376e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_resources.digital_resources_investment_normalized": {
+            "normality_test_p_value": 4.6583010538976195e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_primary_normalized": {
+            "normality_test_p_value": 9.006627349448751e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_secondary_normalized": {
+            "normality_test_p_value": 1.4277575455662338e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.enrollment_rate_tertiary_normalized": {
+            "normality_test_p_value": 5.657513822517517e-32,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_participation.dropout_rate_normalized": {
+            "normality_test_p_value": 3.340750870303232e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.teacher_qualification_index_normalized": {
+            "normality_test_p_value": 3.7974739421777834e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.average_class_size_normalized": {
+            "normality_test_p_value": 1.1756423282605388e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.teaching_hours_yearly_normalized": {
+            "normality_test_p_value": 5.912596333707972e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "education_quality.digital_learning_percentage_normalized": {
+            "normality_test_p_value": 3.0394244692291707e-33,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "total_investment_per_student": {
+            "normality_test_p_value": 7.388532691316575e-08,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        },
+        "overall_quality_score": {
+            "normality_test_p_value": 9.719433755344694e-24,
+            "is_normal": false,
+            "distribution_type": "non-normal"
+        }
+    },
+    "outlier_analysis": {
+        "year": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 1972.5,
+            "upper_bound": 2040.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.total_gdp_percentage": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 2.5149999999999997,
+            "upper_bound": 8.475000000000001,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_primary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 5550.875,
+            "upper_bound": 11509.875,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_secondary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 5923.625,
+            "upper_bound": 14068.625,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_tertiary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 7547.125,
+            "upper_bound": 17400.125,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.research_development": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 0.7949999999999997,
+            "upper_bound": 3.7150000000000003,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.infrastructure_investment": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -227.5,
+            "upper_bound": 2712.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.teacher_training_budget": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -108.375,
+            "upper_bound": 1100.625,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.digital_resources_budget": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -59.5,
+            "upper_bound": 1360.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.special_education_funding": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 8.0,
+            "upper_bound": 1578.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_primary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 95.45,
+            "upper_bound": 101.45,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_secondary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 86.0,
+            "upper_bound": 102.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_tertiary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 37.85,
+            "upper_bound": 87.04999999999998,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.dropout_rate": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.14999999999999947,
+            "upper_bound": 20.25,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.international_student_percentage": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -6.649999999999998,
+            "upper_bound": 28.949999999999996,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.special_needs_student_integration": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 54.49999999999999,
+            "upper_bound": 115.30000000000001,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.adult_education_participation": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -4.7499999999999964,
+            "upper_bound": 54.849999999999994,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.vocational_training_enrollment": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 4.4374999999999964,
+            "upper_bound": 65.3375,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.teacher_qualification_index": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 0.565,
+            "upper_bound": 1.085,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.average_class_size": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 13.5,
+            "upper_bound": 33.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.teaching_hours_yearly": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 694.0,
+            "upper_bound": 1102.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.digital_learning_percentage": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 15.5,
+            "upper_bound": 75.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.student_satisfaction_score": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 2.0,
+            "upper_bound": 6.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.graduate_employment_rate": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 43.29999999999999,
+            "upper_bound": 112.1,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.research_publication_index": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.23499999999999976,
+            "upper_bound": 2.7649999999999997,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.international_ranking_score": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 24.5,
+            "upper_bound": 124.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.student_teacher_ratio_primary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 7.849999999999998,
+            "upper_bound": 24.250000000000004,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.student_teacher_ratio_secondary": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 7.449999999999999,
+            "upper_bound": 17.45,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.teacher_salary_index": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 75.5,
+            "upper_bound": 175.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.digital_resources_investment": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 253.5,
+            "upper_bound": 1249.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.classroom_technology_level": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -1.0,
+            "upper_bound": 7.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.library_resources_per_student": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -20.0,
+            "upper_bound": 140.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.laboratory_equipment_index": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 0.27,
+            "upper_bound": 1.23,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.sports_facilities_rating": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -1.0,
+            "upper_bound": 7.0,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.total_gdp_percentage_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4950000000000001,
+            "upper_bound": 1.4916666666666667,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_primary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4830416666666666,
+            "upper_bound": 1.5032916666666667,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_secondary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.5192235558889724,
+            "upper_bound": 1.5175356339084773,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.per_student_tertiary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4917618189102564,
+            "upper_bound": 1.4819961939102564,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_expenditure.research_development_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4700000000000003,
+            "upper_bound": 1.476666666666667,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.student_teacher_ratio_primary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.5187500000000003,
+            "upper_bound": 1.5312500000000004,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.student_teacher_ratio_secondary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.5100000000000005,
+            "upper_bound": 1.4900000000000002,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.teacher_salary_index_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.49,
+            "upper_bound": 1.51,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_resources.digital_resources_investment_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.493,
+            "upper_bound": 1.499,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_primary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.516666666666666,
+            "upper_bound": 1.4833333333333345,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_secondary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.5,
+            "upper_bound": 1.5,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.enrollment_rate_tertiary_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4859999999999999,
+            "upper_bound": 1.4819999999999995,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_participation.dropout_rate_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.515,
+            "upper_bound": 1.525,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.teacher_qualification_index_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.5399999999999998,
+            "upper_bound": 1.5400000000000003,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.average_class_size_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.45,
+            "upper_bound": 1.55,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.teaching_hours_yearly_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.53,
+            "upper_bound": 1.51,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "education_quality.digital_learning_percentage_normalized": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": -0.4833333333333336,
+            "upper_bound": 1.516666666666667,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "total_investment_per_student": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 8400.5,
+            "upper_bound": 12275.166666666664,
+            "min_outlier": null,
+            "max_outlier": null
+        },
+        "overall_quality_score": {
+            "total_outliers": 0,
+            "outlier_percentage": 0.0,
+            "lower_bound": 77.09166666666667,
+            "upper_bound": 110.76166666666663,
+            "min_outlier": null,
+            "max_outlier": null
+        }
+    }
+}

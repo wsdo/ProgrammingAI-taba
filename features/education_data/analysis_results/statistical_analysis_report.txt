@@ -1,0 +1,1431 @@
+Education Data Statistical Analysis Report
+=======================================
+
+Dataset Overview
+--------------
+Total Records: 3672
+Total Features: 57
+Numerical Features: 53
+Categorical Features: 4
+
+Summary Statistics
+-----------------
+
+year:
+  count: 3672.00
+  mean: 2006.50
+  std: 9.81
+  min: 1990.00
+  q1: 1998.00
+  median: 2006.50
+  q3: 2015.00
+  max: 2023.00
+  skewness: 0.00
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_expenditure.total_gdp_percentage:
+  count: 3672.00
+  mean: 5.49
+  std: 0.86
+  min: 4.00
+  q1: 4.75
+  median: 5.48
+  q3: 6.24
+  max: 7.00
+  skewness: 0.02
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_expenditure.per_student_primary:
+  count: 3672.00
+  mean: 8527.15
+  std: 865.51
+  min: 7000.00
+  q1: 7785.50
+  median: 8543.00
+  q3: 9275.25
+  max: 10000.00
+  skewness: -0.03
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_expenditure.per_student_secondary:
+  count: 3672.00
+  mean: 9989.24
+  std: 1171.17
+  min: 8000.00
+  q1: 8978.00
+  median: 9987.00
+  q3: 11014.25
+  max: 11999.00
+  skewness: -0.01
+  kurtosis: -1.24
+  missing_values: 0.00
+
+education_expenditure.per_student_tertiary:
+  count: 3672.00
+  mean: 12486.44
+  std: 1436.55
+  min: 10002.00
+  q1: 11242.00
+  median: 12475.50
+  q3: 13705.25
+  max: 14994.00
+  skewness: 0.02
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_expenditure.research_development:
+  count: 3672.00
+  mean: 2.25
+  std: 0.43
+  min: 1.50
+  q1: 1.89
+  median: 2.25
+  q3: 2.62
+  max: 3.00
+  skewness: -0.01
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_expenditure.infrastructure_investment:
+  count: 3672.00
+  mean: 1242.97
+  std: 430.99
+  min: 501.00
+  q1: 875.00
+  median: 1247.00
+  q3: 1610.00
+  max: 2000.00
+  skewness: -0.00
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_expenditure.teacher_training_budget:
+  count: 3672.00
+  mean: 497.15
+  std: 173.57
+  min: 200.00
+  q1: 345.00
+  median: 493.00
+  q3: 647.25
+  max: 800.00
+  skewness: 0.04
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_expenditure.digital_resources_budget:
+  count: 3672.00
+  mean: 649.22
+  std: 202.79
+  min: 300.00
+  q1: 473.00
+  median: 649.00
+  q3: 828.00
+  max: 999.00
+  skewness: 0.02
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_expenditure.special_education_funding:
+  count: 3672.00
+  mean: 792.59
+  std: 230.21
+  min: 400.00
+  q1: 596.75
+  median: 785.50
+  q3: 989.25
+  max: 1200.00
+  skewness: 0.05
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_participation.enrollment_rate_primary:
+  count: 3672.00
+  mean: 98.49
+  std: 0.86
+  min: 97.00
+  q1: 97.70
+  median: 98.50
+  q3: 99.20
+  max: 100.00
+  skewness: 0.00
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_participation.enrollment_rate_secondary:
+  count: 3672.00
+  mean: 93.98
+  std: 2.32
+  min: 90.00
+  q1: 92.00
+  median: 94.00
+  q3: 96.00
+  max: 98.00
+  skewness: 0.02
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_participation.enrollment_rate_tertiary:
+  count: 3672.00
+  mean: 62.47
+  std: 7.17
+  min: 50.00
+  q1: 56.30
+  median: 62.50
+  q3: 68.60
+  max: 75.00
+  skewness: 0.02
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_participation.dropout_rate:
+  count: 3672.00
+  mean: 10.06
+  std: 2.91
+  min: 5.00
+  q1: 7.50
+  median: 10.10
+  q3: 12.60
+  max: 15.00
+  skewness: -0.04
+  kurtosis: -1.23
+  missing_values: 0.00
+
+education_participation.international_student_percentage:
+  count: 3672.00
+  mean: 11.08
+  std: 5.19
+  min: 2.00
+  q1: 6.70
+  median: 11.10
+  q3: 15.60
+  max: 20.00
+  skewness: -0.00
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_participation.special_needs_student_integration:
+  count: 3672.00
+  mean: 84.86
+  std: 8.71
+  min: 70.00
+  q1: 77.30
+  median: 84.90
+  q3: 92.50
+  max: 100.00
+  skewness: 0.01
+  kurtosis: -1.22
+  missing_values: 0.00
+
+education_participation.adult_education_participation:
+  count: 3672.00
+  mean: 24.97
+  std: 8.65
+  min: 10.00
+  q1: 17.60
+  median: 24.70
+  q3: 32.50
+  max: 40.00
+  skewness: 0.03
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_participation.vocational_training_enrollment:
+  count: 3672.00
+  mean: 34.87
+  std: 8.69
+  min: 20.00
+  q1: 27.27
+  median: 34.75
+  q3: 42.50
+  max: 50.00
+  skewness: 0.03
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_quality.teacher_qualification_index:
+  count: 3672.00
+  mean: 0.82
+  std: 0.07
+  min: 0.70
+  q1: 0.76
+  median: 0.83
+  q3: 0.89
+  max: 0.95
+  skewness: -0.01
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_quality.average_class_size:
+  count: 3672.00
+  mean: 23.05
+  std: 2.91
+  min: 18.00
+  q1: 21.00
+  median: 23.00
+  q3: 26.00
+  max: 28.00
+  skewness: -0.01
+  kurtosis: -1.15
+  missing_values: 0.00
+
+education_quality.teaching_hours_yearly:
+  count: 3672.00
+  mean: 898.55
+  std: 58.30
+  min: 800.00
+  q1: 847.00
+  median: 898.00
+  q3: 949.00
+  max: 1000.00
+  skewness: 0.03
+  kurtosis: -1.22
+  missing_values: 0.00
+
+education_quality.digital_learning_percentage:
+  count: 3672.00
+  mean: 45.14
+  std: 8.77
+  min: 30.00
+  q1: 38.00
+  median: 45.00
+  q3: 53.00
+  max: 60.00
+  skewness: 0.00
+  kurtosis: -1.22
+  missing_values: 0.00
+
+education_quality.student_satisfaction_score:
+  count: 3672.00
+  mean: 4.03
+  std: 0.58
+  min: 3.00
+  q1: 3.50
+  median: 4.05
+  q3: 4.50
+  max: 5.00
+  skewness: -0.07
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_quality.graduate_employment_rate:
+  count: 3672.00
+  mean: 77.55
+  std: 10.05
+  min: 60.00
+  q1: 69.10
+  median: 77.40
+  q3: 86.30
+  max: 95.00
+  skewness: 0.01
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_quality.research_publication_index:
+  count: 3672.00
+  mean: 1.26
+  std: 0.43
+  min: 0.50
+  q1: 0.89
+  median: 1.27
+  q3: 1.64
+  max: 2.00
+  skewness: -0.04
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_quality.international_ranking_score:
+  count: 3672.00
+  mean: 74.68
+  std: 14.52
+  min: 50.00
+  q1: 62.00
+  median: 75.00
+  q3: 87.00
+  max: 100.00
+  skewness: 0.02
+  kurtosis: -1.23
+  missing_values: 0.00
+
+education_resources.student_teacher_ratio_primary:
+  count: 3672.00
+  mean: 16.05
+  std: 2.32
+  min: 12.00
+  q1: 14.00
+  median: 16.10
+  q3: 18.10
+  max: 20.00
+  skewness: -0.04
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_resources.student_teacher_ratio_secondary:
+  count: 3672.00
+  mean: 12.49
+  std: 1.45
+  min: 10.00
+  q1: 11.20
+  median: 12.50
+  q3: 13.70
+  max: 15.00
+  skewness: 0.01
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_resources.teacher_salary_index:
+  count: 3672.00
+  mean: 125.13
+  std: 14.36
+  min: 100.00
+  q1: 113.00
+  median: 125.00
+  q3: 138.00
+  max: 150.00
+  skewness: -0.01
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_resources.digital_resources_investment:
+  count: 3672.00
+  mean: 750.41
+  std: 144.86
+  min: 500.00
+  q1: 627.00
+  median: 750.50
+  q3: 876.00
+  max: 1000.00
+  skewness: 0.00
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_resources.classroom_technology_level:
+  count: 3672.00
+  mean: 2.97
+  std: 1.15
+  min: 1.00
+  q1: 2.00
+  median: 2.90
+  q3: 4.00
+  max: 5.00
+  skewness: 0.03
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_resources.library_resources_per_student:
+  count: 3672.00
+  mean: 59.96
+  std: 23.20
+  min: 20.00
+  q1: 40.00
+  median: 60.00
+  q3: 80.00
+  max: 100.00
+  skewness: 0.01
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_resources.laboratory_equipment_index:
+  count: 3672.00
+  mean: 0.75
+  std: 0.14
+  min: 0.50
+  q1: 0.63
+  median: 0.75
+  q3: 0.87
+  max: 1.00
+  skewness: 0.00
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_resources.sports_facilities_rating:
+  count: 3672.00
+  mean: 2.98
+  std: 1.15
+  min: 1.00
+  q1: 2.00
+  median: 3.00
+  q3: 4.00
+  max: 5.00
+  skewness: -0.00
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_expenditure.total_gdp_percentage_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.49
+  q3: 0.75
+  max: 1.00
+  skewness: 0.02
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_expenditure.per_student_primary_normalized:
+  count: 3672.00
+  mean: 0.51
+  std: 0.29
+  min: 0.00
+  q1: 0.26
+  median: 0.51
+  q3: 0.76
+  max: 1.00
+  skewness: -0.03
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_expenditure.per_student_secondary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.24
+  median: 0.50
+  q3: 0.75
+  max: 1.00
+  skewness: -0.01
+  kurtosis: -1.24
+  missing_values: 0.00
+
+education_expenditure.per_student_tertiary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.50
+  q3: 0.74
+  max: 1.00
+  skewness: 0.02
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_expenditure.research_development_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.26
+  median: 0.50
+  q3: 0.75
+  max: 1.00
+  skewness: -0.01
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_resources.student_teacher_ratio_primary_normalized:
+  count: 3672.00
+  mean: 0.51
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.51
+  q3: 0.76
+  max: 1.00
+  skewness: -0.04
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_resources.student_teacher_ratio_secondary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.24
+  median: 0.50
+  q3: 0.74
+  max: 1.00
+  skewness: 0.01
+  kurtosis: -1.19
+  missing_values: 0.00
+
+education_resources.teacher_salary_index_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.26
+  median: 0.50
+  q3: 0.76
+  max: 1.00
+  skewness: -0.01
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_resources.digital_resources_investment_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.50
+  q3: 0.75
+  max: 1.00
+  skewness: 0.00
+  kurtosis: -1.18
+  missing_values: 0.00
+
+education_participation.enrollment_rate_primary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.23
+  median: 0.50
+  q3: 0.73
+  max: 1.00
+  skewness: 0.00
+  kurtosis: -1.17
+  missing_values: 0.00
+
+education_participation.enrollment_rate_secondary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.50
+  q3: 0.75
+  max: 1.00
+  skewness: 0.02
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_participation.enrollment_rate_tertiary_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.50
+  q3: 0.74
+  max: 1.00
+  skewness: 0.02
+  kurtosis: -1.20
+  missing_values: 0.00
+
+education_participation.dropout_rate_normalized:
+  count: 3672.00
+  mean: 0.51
+  std: 0.29
+  min: 0.00
+  q1: 0.25
+  median: 0.51
+  q3: 0.76
+  max: 1.00
+  skewness: -0.04
+  kurtosis: -1.23
+  missing_values: 0.00
+
+education_quality.teacher_qualification_index_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.24
+  median: 0.52
+  q3: 0.76
+  max: 1.00
+  skewness: -0.01
+  kurtosis: -1.21
+  missing_values: 0.00
+
+education_quality.average_class_size_normalized:
+  count: 3672.00
+  mean: 0.51
+  std: 0.29
+  min: 0.00
+  q1: 0.30
+  median: 0.50
+  q3: 0.80
+  max: 1.00
+  skewness: -0.01
+  kurtosis: -1.15
+  missing_values: 0.00
+
+education_quality.teaching_hours_yearly_normalized:
+  count: 3672.00
+  mean: 0.49
+  std: 0.29
+  min: 0.00
+  q1: 0.23
+  median: 0.49
+  q3: 0.74
+  max: 1.00
+  skewness: 0.03
+  kurtosis: -1.22
+  missing_values: 0.00
+
+education_quality.digital_learning_percentage_normalized:
+  count: 3672.00
+  mean: 0.50
+  std: 0.29
+  min: 0.00
+  q1: 0.27
+  median: 0.50
+  q3: 0.77
+  max: 1.00
+  skewness: 0.00
+  kurtosis: -1.22
+  missing_values: 0.00
+
+total_investment_per_student:
+  count: 3672.00
+  mean: 10334.28
+  std: 674.81
+  min: 8508.33
+  q1: 9853.50
+  median: 10338.67
+  q3: 10822.17
+  max: 12221.33
+  skewness: -0.01
+  kurtosis: -0.47
+  missing_values: 0.00
+
+overall_quality_score:
+  count: 3672.00
+  mean: 93.92
+  std: 5.15
+  min: 82.55
+  q1: 89.72
+  median: 93.97
+  q3: 98.14
+  max: 106.47
+  skewness: 0.03
+  kurtosis: -0.99
+  missing_values: 0.00
+
+Categorical Data Analysis
+-----------------------
+
+country:
+  unique_values: 27
+  most_common: AT
+  most_common_count: 136
+  least_common: SE
+  least_common_count: 136
+  missing_values: 0
+
+quarter:
+  unique_values: 4
+  most_common: Q1
+  most_common_count: 918
+  least_common: Q4
+  least_common_count: 918
+  missing_values: 0
+
+last_updated:
+  unique_values: 698
+  most_common: 2024-12-14 14:21:57.507000
+  most_common_count: 8
+  least_common: 2024-12-14 14:21:56.929000
+  least_common_count: 1
+  missing_values: 0
+
+time_period:
+  unique_values: 136
+  most_common: 1990-Q1
+  most_common_count: 27
+  least_common: 2023-Q4
+  least_common_count: 27
+  missing_values: 0
+
+Distribution Analysis
+--------------------
+
+year:
+  normality_test_p_value: 7.090861832608961e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.total_gdp_percentage:
+  normality_test_p_value: 2.2520552061971775e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_primary:
+  normality_test_p_value: 4.7822243965890236e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_secondary:
+  normality_test_p_value: 1.7174238971467775e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_tertiary:
+  normality_test_p_value: 3.925690837148168e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.research_development:
+  normality_test_p_value: 1.501782821074782e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.infrastructure_investment:
+  normality_test_p_value: 1.0513868362410594e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.teacher_training_budget:
+  normality_test_p_value: 1.587388984358342e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.digital_resources_budget:
+  normality_test_p_value: 3.2863986588529755e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.special_education_funding:
+  normality_test_p_value: 6.090230732721493e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_primary:
+  normality_test_p_value: 9.006627349448751e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_secondary:
+  normality_test_p_value: 1.4277575455662338e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_tertiary:
+  normality_test_p_value: 5.65751382252521e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.dropout_rate:
+  normality_test_p_value: 3.340750870310641e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.international_student_percentage:
+  normality_test_p_value: 4.000092735747555e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.special_needs_student_integration:
+  normality_test_p_value: 7.371219266680022e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.adult_education_participation:
+  normality_test_p_value: 2.7410883077271645e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.vocational_training_enrollment:
+  normality_test_p_value: 1.1699735986049248e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.teacher_qualification_index:
+  normality_test_p_value: 3.7974739421777834e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.average_class_size:
+  normality_test_p_value: 1.1756423282605388e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.teaching_hours_yearly:
+  normality_test_p_value: 5.912596333707972e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.digital_learning_percentage:
+  normality_test_p_value: 3.0394244692291707e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.student_satisfaction_score:
+  normality_test_p_value: 1.249103514297283e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.graduate_employment_rate:
+  normality_test_p_value: 1.3442517062217121e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.research_publication_index:
+  normality_test_p_value: 2.1004601509485625e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.international_ranking_score:
+  normality_test_p_value: 3.6535054164426005e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.student_teacher_ratio_primary:
+  normality_test_p_value: 1.477227279682243e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.student_teacher_ratio_secondary:
+  normality_test_p_value: 3.306255878512569e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.teacher_salary_index:
+  normality_test_p_value: 2.701866745930641e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.digital_resources_investment:
+  normality_test_p_value: 4.6583010538976195e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.classroom_technology_level:
+  normality_test_p_value: 3.6135432320053827e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.library_resources_per_student:
+  normality_test_p_value: 1.44782768084835e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.laboratory_equipment_index:
+  normality_test_p_value: 1.2106090039970734e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.sports_facilities_rating:
+  normality_test_p_value: 3.4014177921838374e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.total_gdp_percentage_normalized:
+  normality_test_p_value: 2.252055206196533e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_primary_normalized:
+  normality_test_p_value: 4.7822243965903926e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_secondary_normalized:
+  normality_test_p_value: 1.7174238971467775e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.per_student_tertiary_normalized:
+  normality_test_p_value: 3.925690837148168e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_expenditure.research_development_normalized:
+  normality_test_p_value: 1.501782821074782e-31
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.student_teacher_ratio_primary_normalized:
+  normality_test_p_value: 1.477227279682243e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.student_teacher_ratio_secondary_normalized:
+  normality_test_p_value: 3.306255878513374e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.teacher_salary_index_normalized:
+  normality_test_p_value: 2.701866745931376e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_resources.digital_resources_investment_normalized:
+  normality_test_p_value: 4.6583010538976195e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_primary_normalized:
+  normality_test_p_value: 9.006627349448751e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_secondary_normalized:
+  normality_test_p_value: 1.4277575455662338e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.enrollment_rate_tertiary_normalized:
+  normality_test_p_value: 5.657513822517517e-32
+  is_normal: False
+  distribution_type: non-normal
+
+education_participation.dropout_rate_normalized:
+  normality_test_p_value: 3.340750870303232e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.teacher_qualification_index_normalized:
+  normality_test_p_value: 3.7974739421777834e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.average_class_size_normalized:
+  normality_test_p_value: 1.1756423282605388e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.teaching_hours_yearly_normalized:
+  normality_test_p_value: 5.912596333707972e-33
+  is_normal: False
+  distribution_type: non-normal
+
+education_quality.digital_learning_percentage_normalized:
+  normality_test_p_value: 3.0394244692291707e-33
+  is_normal: False
+  distribution_type: non-normal
+
+total_investment_per_student:
+  normality_test_p_value: 7.388532691316575e-08
+  is_normal: False
+  distribution_type: non-normal
+
+overall_quality_score:
+  normality_test_p_value: 9.719433755344694e-24
+  is_normal: False
+  distribution_type: non-normal
+
+Outlier Analysis
+---------------
+
+year:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 1972.50
+  upper_bound: 2040.50
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.total_gdp_percentage:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 2.51
+  upper_bound: 8.48
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_primary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 5550.88
+  upper_bound: 11509.88
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_secondary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 5923.62
+  upper_bound: 14068.62
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_tertiary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 7547.12
+  upper_bound: 17400.12
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.research_development:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 0.79
+  upper_bound: 3.72
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.infrastructure_investment:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -227.50
+  upper_bound: 2712.50
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.teacher_training_budget:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -108.38
+  upper_bound: 1100.62
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.digital_resources_budget:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -59.50
+  upper_bound: 1360.50
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.special_education_funding:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 8.00
+  upper_bound: 1578.00
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_primary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 95.45
+  upper_bound: 101.45
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_secondary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 86.00
+  upper_bound: 102.00
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_tertiary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 37.85
+  upper_bound: 87.05
+  min_outlier: None
+  max_outlier: None
+
+education_participation.dropout_rate:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.15
+  upper_bound: 20.25
+  min_outlier: None
+  max_outlier: None
+
+education_participation.international_student_percentage:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -6.65
+  upper_bound: 28.95
+  min_outlier: None
+  max_outlier: None
+
+education_participation.special_needs_student_integration:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 54.50
+  upper_bound: 115.30
+  min_outlier: None
+  max_outlier: None
+
+education_participation.adult_education_participation:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -4.75
+  upper_bound: 54.85
+  min_outlier: None
+  max_outlier: None
+
+education_participation.vocational_training_enrollment:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 4.44
+  upper_bound: 65.34
+  min_outlier: None
+  max_outlier: None
+
+education_quality.teacher_qualification_index:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 0.56
+  upper_bound: 1.08
+  min_outlier: None
+  max_outlier: None
+
+education_quality.average_class_size:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 13.50
+  upper_bound: 33.50
+  min_outlier: None
+  max_outlier: None
+
+education_quality.teaching_hours_yearly:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 694.00
+  upper_bound: 1102.00
+  min_outlier: None
+  max_outlier: None
+
+education_quality.digital_learning_percentage:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 15.50
+  upper_bound: 75.50
+  min_outlier: None
+  max_outlier: None
+
+education_quality.student_satisfaction_score:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 2.00
+  upper_bound: 6.00
+  min_outlier: None
+  max_outlier: None
+
+education_quality.graduate_employment_rate:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 43.30
+  upper_bound: 112.10
+  min_outlier: None
+  max_outlier: None
+
+education_quality.research_publication_index:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.23
+  upper_bound: 2.76
+  min_outlier: None
+  max_outlier: None
+
+education_quality.international_ranking_score:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 24.50
+  upper_bound: 124.50
+  min_outlier: None
+  max_outlier: None
+
+education_resources.student_teacher_ratio_primary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 7.85
+  upper_bound: 24.25
+  min_outlier: None
+  max_outlier: None
+
+education_resources.student_teacher_ratio_secondary:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 7.45
+  upper_bound: 17.45
+  min_outlier: None
+  max_outlier: None
+
+education_resources.teacher_salary_index:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 75.50
+  upper_bound: 175.50
+  min_outlier: None
+  max_outlier: None
+
+education_resources.digital_resources_investment:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 253.50
+  upper_bound: 1249.50
+  min_outlier: None
+  max_outlier: None
+
+education_resources.classroom_technology_level:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -1.00
+  upper_bound: 7.00
+  min_outlier: None
+  max_outlier: None
+
+education_resources.library_resources_per_student:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -20.00
+  upper_bound: 140.00
+  min_outlier: None
+  max_outlier: None
+
+education_resources.laboratory_equipment_index:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 0.27
+  upper_bound: 1.23
+  min_outlier: None
+  max_outlier: None
+
+education_resources.sports_facilities_rating:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -1.00
+  upper_bound: 7.00
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.total_gdp_percentage_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.50
+  upper_bound: 1.49
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_primary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.48
+  upper_bound: 1.50
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_secondary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.52
+  upper_bound: 1.52
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.per_student_tertiary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.49
+  upper_bound: 1.48
+  min_outlier: None
+  max_outlier: None
+
+education_expenditure.research_development_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.47
+  upper_bound: 1.48
+  min_outlier: None
+  max_outlier: None
+
+education_resources.student_teacher_ratio_primary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.52
+  upper_bound: 1.53
+  min_outlier: None
+  max_outlier: None
+
+education_resources.student_teacher_ratio_secondary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.51
+  upper_bound: 1.49
+  min_outlier: None
+  max_outlier: None
+
+education_resources.teacher_salary_index_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.49
+  upper_bound: 1.51
+  min_outlier: None
+  max_outlier: None
+
+education_resources.digital_resources_investment_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.49
+  upper_bound: 1.50
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_primary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.52
+  upper_bound: 1.48
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_secondary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.50
+  upper_bound: 1.50
+  min_outlier: None
+  max_outlier: None
+
+education_participation.enrollment_rate_tertiary_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.49
+  upper_bound: 1.48
+  min_outlier: None
+  max_outlier: None
+
+education_participation.dropout_rate_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.52
+  upper_bound: 1.52
+  min_outlier: None
+  max_outlier: None
+
+education_quality.teacher_qualification_index_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.54
+  upper_bound: 1.54
+  min_outlier: None
+  max_outlier: None
+
+education_quality.average_class_size_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.45
+  upper_bound: 1.55
+  min_outlier: None
+  max_outlier: None
+
+education_quality.teaching_hours_yearly_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.53
+  upper_bound: 1.51
+  min_outlier: None
+  max_outlier: None
+
+education_quality.digital_learning_percentage_normalized:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: -0.48
+  upper_bound: 1.52
+  min_outlier: None
+  max_outlier: None
+
+total_investment_per_student:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 8400.50
+  upper_bound: 12275.17
+  min_outlier: None
+  max_outlier: None
+
+overall_quality_score:
+  total_outliers: 0.00
+  outlier_percentage: 0.00
+  lower_bound: 77.09
+  upper_bound: 110.76
+  min_outlier: None
+  max_outlier: None

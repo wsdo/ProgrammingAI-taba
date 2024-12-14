@@ -1,0 +1,113 @@
+Education Data Preprocessing Report
+=================================
+
+Dataset Statistics:
+Total Records: 3672
+Time Period: 1990 to 2023
+Countries: 27
+
+Missing Values Summary:
+
+Data Ranges for Key Metrics:
+- education_expenditure.total_gdp_percentage:
+  Min: 4.00
+  Max: 7.00
+  Mean: 5.49
+  Std: 0.86
+
+- education_expenditure.per_student_primary:
+  Min: 7000.00
+  Max: 10000.00
+  Mean: 8527.15
+  Std: 865.51
+
+- education_expenditure.per_student_secondary:
+  Min: 8000.00
+  Max: 11999.00
+  Mean: 9989.24
+  Std: 1171.17
+
+- education_expenditure.per_student_tertiary:
+  Min: 10002.00
+  Max: 14994.00
+  Mean: 12486.44
+  Std: 1436.55
+
+- education_expenditure.research_development:
+  Min: 1.50
+  Max: 3.00
+  Mean: 2.25
+  Std: 0.43
+
+- education_resources.student_teacher_ratio_primary:
+  Min: 12.00
+  Max: 20.00
+  Mean: 16.05
+  Std: 2.32
+
+- education_resources.student_teacher_ratio_secondary:
+  Min: 10.00
+  Max: 15.00
+  Mean: 12.49
+  Std: 1.45
+
+- education_resources.teacher_salary_index:
+  Min: 100.00
+  Max: 150.00
+  Mean: 125.13
+  Std: 14.36
+
+- education_resources.digital_resources_investment:
+  Min: 500.00
+  Max: 1000.00
+  Mean: 750.41
+  Std: 144.86
+
+- education_participation.enrollment_rate_primary:
+  Min: 97.00
+  Max: 100.00
+  Mean: 98.49
+  Std: 0.86
+
+- education_participation.enrollment_rate_secondary:
+  Min: 90.00
+  Max: 98.00
+  Mean: 93.98
+  Std: 2.32
+
+- education_participation.enrollment_rate_tertiary:
+  Min: 50.00
+  Max: 75.00
+  Mean: 62.47
+  Std: 7.17
+
+- education_participation.dropout_rate:
+  Min: 5.00
+  Max: 15.00
+  Mean: 10.06
+  Std: 2.91
+
+- education_quality.teacher_qualification_index:
+  Min: 0.70
+  Max: 0.95
+  Mean: 0.82
+  Std: 0.07
+
+- education_quality.average_class_size:
+  Min: 18.00
+  Max: 28.00
+  Mean: 23.05
+  Std: 2.91
+
+- education_quality.teaching_hours_yearly:
+  Min: 800.00
+  Max: 1000.00
+  Mean: 898.55
+  Std: 58.30
+
+- education_quality.digital_learning_percentage:
+  Min: 30.00
+  Max: 60.00
+  Mean: 45.14
+  Std: 8.77
+

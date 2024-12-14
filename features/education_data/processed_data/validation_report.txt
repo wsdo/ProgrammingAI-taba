@@ -1,0 +1,9 @@
+Education Data Validation Report
+===============================
+
+Total Records: 3672
+Valid Records: 3672
+Records with Errors: 0
+Error Rate: 0.0%
+Total Errors: 0
+

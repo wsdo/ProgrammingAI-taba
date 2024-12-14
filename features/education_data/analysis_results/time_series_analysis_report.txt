@@ -1,0 +1,182 @@
+Education Data Time Series Analysis Report
+========================================
+
+Trend Analysis
+--------------
+
+education_expenditure.total_gdp_percentage:
+  Direction: decreasing
+  Significance: not significant
+  Total Change: 0.13
+  Total Change (%): 2.41%
+  CAGR: 0.07%
+  R-squared: 0.078
+
+education_participation.enrollment_rate_primary:
+  Direction: decreasing
+  Significance: not significant
+  Total Change: 0.17
+  Total Change (%): 0.17%
+  CAGR: 0.01%
+  R-squared: 0.005
+
+education_participation.enrollment_rate_secondary:
+  Direction: decreasing
+  Significance: not significant
+  Total Change: 0.27
+  Total Change (%): 0.29%
+  CAGR: 0.01%
+  R-squared: 0.066
+
+education_participation.enrollment_rate_tertiary:
+  Direction: increasing
+  Significance: not significant
+  Total Change: 1.10
+  Total Change (%): 1.77%
+  CAGR: 0.05%
+  R-squared: 0.002
+
+education_participation.dropout_rate:
+  Direction: decreasing
+  Significance: not significant
+  Total Change: -0.63
+  Total Change (%): -5.93%
+  CAGR: -0.18%
+  R-squared: 0.113
+
+education_quality.teacher_qualification_index:
+  Direction: increasing
+  Significance: not significant
+  Total Change: 0.02
+  Total Change (%): 1.99%
+  CAGR: 0.06%
+  R-squared: 0.039
+
+education_quality.digital_learning_percentage:
+  Direction: increasing
+  Significance: not significant
+  Total Change: 0.13
+  Total Change (%): 0.29%
+  CAGR: 0.01%
+  R-squared: 0.003
+
+Seasonality Analysis
+-------------------
+
+education_expenditure.total_gdp_percentage:
+  Has Seasonality: False
+  Seasonal Strength: 0.001
+  Peak Quarter: Q3
+  Trough Quarter: Q1
+
+education_participation.enrollment_rate_primary:
+  Has Seasonality: False
+  Seasonal Strength: 0.000
+  Peak Quarter: Q3
+  Trough Quarter: Q1
+
+education_participation.enrollment_rate_secondary:
+  Has Seasonality: False
+  Seasonal Strength: 0.001
+  Peak Quarter: Q3
+  Trough Quarter: Q1
+
+education_participation.enrollment_rate_tertiary:
+  Has Seasonality: False
+  Seasonal Strength: 0.001
+  Peak Quarter: Q2
+  Trough Quarter: Q3
+
+education_participation.dropout_rate:
+  Has Seasonality: False
+  Seasonal Strength: 0.000
+  Peak Quarter: Q3
+  Trough Quarter: Q4
+
+education_quality.teacher_qualification_index:
+  Has Seasonality: False
+  Seasonal Strength: 0.003
+  Peak Quarter: Q3
+  Trough Quarter: Q1
+
+education_quality.digital_learning_percentage:
+  Has Seasonality: False
+  Seasonal Strength: 0.001
+  Peak Quarter: Q4
+  Trough Quarter: Q2
+
+Stationarity Analysis
+--------------------
+
+education_expenditure.total_gdp_percentage:
+  Is Stationary: True
+  ADF Statistic: -61.048
+  P-value: 0.000
+
+education_participation.enrollment_rate_primary:
+  Is Stationary: True
+  ADF Statistic: -60.703
+  P-value: 0.000
+
+education_participation.enrollment_rate_secondary:
+  Is Stationary: True
+  ADF Statistic: -61.748
+  P-value: 0.000
+
+education_participation.enrollment_rate_tertiary:
+  Is Stationary: True
+  ADF Statistic: -60.530
+  P-value: 0.000
+
+education_participation.dropout_rate:
+  Is Stationary: True
+  ADF Statistic: -60.644
+  P-value: 0.000
+
+education_quality.teacher_qualification_index:
+  Is Stationary: True
+  ADF Statistic: -60.777
+  P-value: 0.000
+
+education_quality.digital_learning_percentage:
+  Is Stationary: True
+  ADF Statistic: -61.475
+  P-value: 0.000
+
+Volatility Analysis
+------------------
+
+education_expenditure.total_gdp_percentage:
+  Mean Volatility: 0.819
+  Volatility Range: [0.050, 1.607]
+  Volatility Trend: decreasing
+
+education_participation.enrollment_rate_primary:
+  Mean Volatility: 0.812
+  Volatility Range: [0.058, 1.590]
+  Volatility Trend: increasing
+
+education_participation.enrollment_rate_secondary:
+  Mean Volatility: 2.204
+  Volatility Range: [0.250, 4.282]
+  Volatility Trend: increasing
+
+education_participation.enrollment_rate_tertiary:
+  Mean Volatility: 6.788
+  Volatility Range: [0.497, 12.906]
+  Volatility Trend: increasing
+
+education_participation.dropout_rate:
+  Mean Volatility: 2.732
+  Volatility Range: [0.171, 5.100]
+  Volatility Trend: increasing
+
+education_quality.teacher_qualification_index:
+  Mean Volatility: 0.069
+  Volatility Range: [0.005, 0.134]
+  Volatility Trend: decreasing
+
+education_quality.digital_learning_percentage:
+  Mean Volatility: 8.342
+  Volatility Range: [0.500, 15.610]
+  Volatility Trend: increasing
