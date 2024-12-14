@@ -22,6 +22,9 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 import psycopg2
 from psycopg2.extras import execute_values
+import time
+from pymongo import UpdateOne
+from statsmodels.tsa.arima.model import ARIMA
 
 # 2. Configure Logging
 logging.basicConfig(
@@ -51,26 +54,47 @@ MONGODB_DB = os.getenv('MONGODB_DB')
 
 # 4. Database Connection Functions
 def get_postgres_connection():
-    """Create a connection to PostgreSQL database"""
-    try:
-        conn = psycopg2.connect(**POSTGRES_CONFIG)
-        print("Successfully connected to PostgreSQL")
-        return conn
-    except Exception as e:
-        print(f"Error connecting to PostgreSQL: {str(e)}")
-        return None
+    """Get PostgreSQL connection with retry mechanism"""
+    max_retries = 3
+    retry_count = 0
+    
+    while retry_count < max_retries:
+        try:
+            conn = psycopg2.connect(
+                dbname=os.getenv('POSTGRES_DB'),
+                user=os.getenv('POSTGRES_USER'),
+                password=os.getenv('POSTGRES_PASSWORD'),
+                host=os.getenv('POSTGRES_HOST'),
+                port=os.getenv('POSTGRES_PORT'),
+                connect_timeout=30  # Increase timeout to 30 seconds
+            )
+            print("Successfully connected to PostgreSQL")
+            return conn
+        except Exception as e:
+            print(f"Attempt {retry_count + 1} failed: {str(e)}")
+            retry_count += 1
+            if retry_count < max_retries:
+                time.sleep(2)  # Wait 2 seconds before retrying
+    
+    print("Failed to connect to PostgreSQL after all retries")
+    return None
 
 def get_mongodb_connection():
-    """Create a connection to MongoDB database"""
+    """Get MongoDB connection with retry mechanism"""
     try:
         client = MongoClient(
-            host=MONGODB_HOST,
-            port=MONGODB_PORT,
-            username=MONGODB_USER,
-            password=MONGODB_PASSWORD,
-            authSource='admin'
+            host=os.getenv('MONGODB_HOST'),
+            port=int(os.getenv('MONGODB_PORT')),
+            username=os.getenv('MONGODB_USER'),
+            password=os.getenv('MONGODB_PASSWORD'),
+            serverSelectionTimeoutMS=30000,  # Increase timeout to 30 seconds
+            connectTimeoutMS=30000,
+            retryWrites=True,
+            w='majority'
         )
-        db = client[MONGODB_DB]
+        db = client[os.getenv('MONGODB_DB')]
+        # Test connection
+        client.server_info()
         print("Successfully connected to MongoDB")
         return db
     except Exception as e:
@@ -122,181 +146,401 @@ def setup_postgres_schema(conn):
         print(f"Error setting up PostgreSQL schema: {str(e)}")
         conn.rollback()
 
-# 6. Data Collection and Storage
+def setup_postgres_database(conn):
+    """Set up PostgreSQL database tables"""
+    try:
+        with conn.cursor() as cur:
+            # Create raw education data table
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS raw_education_data (
+                    id SERIAL PRIMARY KEY,
+                    country VARCHAR(50),
+                    year INTEGER,
+                    metric_name VARCHAR(100),
+                    metric_value FLOAT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(country, year, metric_name)
+                );
+                
+                -- Create indexes for better query performance
+                CREATE INDEX IF NOT EXISTS idx_country ON raw_education_data(country);
+                CREATE INDEX IF NOT EXISTS idx_year ON raw_education_data(year);
+                CREATE INDEX IF NOT EXISTS idx_metric ON raw_education_data(metric_name);
+            """)
+            
+            conn.commit()
+            print("Successfully set up PostgreSQL database")
+            
+    except Exception as e:
+        print(f"Error setting up PostgreSQL database: {str(e)}")
+        conn.rollback()
+
+# 6. Data Processing and Storage Functions
+def process_education_data(df, metric_type):
+    """Process education data with error handling and data validation"""
+    try:
+        # Remove any duplicate columns
+        df = df.loc[:, ~df.columns.duplicated()]
+        
+        # Basic data cleaning
+        df = df.dropna(how='all')  # Drop rows where all values are NaN
+        
+        # Convert numeric columns to float
+        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+        for col in numeric_columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+        
+        # Add metadata
+        df['metric_type'] = metric_type
+        df['processed_date'] = pd.Timestamp.now()
+        
+        # Validate data
+        if df.empty:
+            raise ValueError(f"No valid data found for {metric_type}")
+            
+        return df
+        
+    except Exception as e:
+        logging.error(f"Error processing {metric_type} data: {str(e)}")
+        return None
+
+def store_in_mongodb(db, collection_name, records):
+    """Store data in MongoDB with error handling and batch processing"""
+    try:
+        collection = db[collection_name]
+        
+        # Use bulk write operations for better performance
+        operations = []
+        for record in records:
+            # Create unique identifier
+            filter_dict = {
+                'country': record.get('country'),
+                'year': record.get('year'),
+                'metric_type': record.get('metric_type')
+            }
+            
+            operations.append(
+                UpdateOne(
+                    filter_dict,
+                    {'$set': record},
+                    upsert=True
+                )
+            )
+            
+        if operations:
+            # Process in batches of 1000
+            batch_size = 1000
+            for i in range(0, len(operations), batch_size):
+                batch = operations[i:i + batch_size]
+                collection.bulk_write(batch, ordered=False)
+                
+        return True
+        
+    except Exception as e:
+        logging.error(f"Error storing data in MongoDB: {str(e)}")
+        return False
+
+def store_in_postgres(conn, table_name, records):
+    """Store data in PostgreSQL with error handling"""
+    try:
+        with conn.cursor() as cur:
+            # Convert records to list of tuples for PostgreSQL
+            values = []
+            for record in records:
+                try:
+                    values.append((
+                        str(record['country']),
+                        int(record['year']),
+                        str(record['metric_type']),
+                        float(record['value'])
+                    ))
+                except (ValueError, TypeError) as e:
+                    print(f"Skipping record due to conversion error: {e}")
+                    continue
+            
+            if values:
+                execute_values(cur, f"""
+                    INSERT INTO {table_name} (country, year, metric_name, metric_value)
+                    VALUES %s
+                    ON CONFLICT (country, year, metric_name) 
+                    DO UPDATE SET metric_value = EXCLUDED.metric_value;
+                """, values)
+                conn.commit()
+                print(f"Stored {len(values)} records in PostgreSQL for {table_name}")
+                
+    except Exception as e:
+        print(f"Error storing data in PostgreSQL: {str(e)}")
+        conn.rollback()
+
+def collect_eurostat_data(metric_name):
+    """Collect education data from Eurostat with error handling"""
+    try:
+        # Define dataset codes
+        dataset_codes = {
+            'education_investment': 'educ_uoe_fine09',
+            'student_teacher_ratio': 'educ_uoe_perp04',
+            'completion_rate': 'edat_lfse_03'
+        }
+        
+        if metric_name not in dataset_codes:
+            raise ValueError(f"Unknown metric: {metric_name}")
+            
+        # Get dataset code
+        dataset_code = dataset_codes[metric_name]
+        
+        # Collect data from Eurostat
+        df = eurostat.get_data_df(dataset_code)
+        
+        if df is None or df.empty:
+            print(f"No data found for {metric_name}")
+            return None
+            
+        # Process the DataFrame
+        df = df.reset_index()
+        
+        # Get time column (should contain country codes)
+        time_cols = [col for col in df.columns if 'TIME' in col]
+        if not time_cols:
+            print(f"No time column found for {metric_name}")
+            return None
+            
+        time_col = time_cols[0]
+        
+        # Extract country from the time column
+        df['country'] = df[time_col].str.split('\\').str[0]
+        
+        # Get year columns (numeric columns)
+        year_cols = [col for col in df.columns if str(col).isdigit()]
+        if not year_cols:
+            print(f"No year columns found for {metric_name}")
+            return None
+            
+        # Create processed dataframe
+        processed_data = []
+        
+        # Process each year
+        for year in year_cols:
+            year_data = df[['country', year]].copy()
+            year_data = year_data.rename(columns={year: 'value'})
+            year_data['year'] = int(year)
+            processed_data.append(year_data)
+            
+        # Combine all years
+        result_df = pd.concat(processed_data, ignore_index=True)
+        
+        # Clean up the data
+        result_df['value'] = pd.to_numeric(result_df['value'], errors='coerce')
+        result_df = result_df.dropna(subset=['value'])
+        
+        return result_df
+        
+    except Exception as e:
+        print(f"Error collecting {metric_name} data: {str(e)}")
+        return None
+
 def collect_and_store_education_data(pg_conn, mongo_db):
-    """Collect education data from Eurostat and store in databases"""
-    datasets = {
-        'education_investment': 'educ_uoe_fine09',
-        'student_teacher_ratio': 'educ_uoe_perp04',
-        'completion_rate': 'edat_lfse_03',
-        'literacy_rate': 'edat_lfse_01'
+    """Collect and store education data with improved error handling"""
+    metrics = {
+        'education_investment': 'educ_investment',
+        'student_teacher_ratio': 'student_teacher',
+        'completion_rate': 'completion_rate'
     }
     
-    for metric, code in datasets.items():
+    for metric_name, table_name in metrics.items():
         try:
-            print(f"Collecting {metric} data...")
-            df = eurostat.get_data_df(code)
+            print(f"Collecting {metric_name} data...")
             
-            # Process data
-            df = df.reset_index()
+            # Collect data
+            df = collect_eurostat_data(metric_name)
+            if df is None:
+                print(f"Skipping {metric_name} due to data collection error")
+                continue
             
-            # Get the geo/time column
-            time_col = [col for col in df.columns if 'TIME' in col][0]
+            # Add metadata
+            df['metric_type'] = metric_name
+            df['processed_date'] = pd.Timestamp.now()
             
-            # Extract country from the time column
-            df['country'] = df[time_col].str.split('\\').str[0]
+            # Convert to records
+            records = df.to_dict('records')
             
-            # Get year columns (they should be numeric)
-            year_columns = [col for col in df.columns if str(col).isdigit()]
-            
-            # Create a new dataframe for the processed data
-            processed_data = []
-            
-            # Process each year column
-            for year in year_columns:
-                year_data = df[['country', year] + [col for col in df.columns if col not in year_columns and col != time_col]]
-                year_data = year_data.rename(columns={year: 'value'})
-                year_data['year'] = int(year)
-                year_data['metric'] = metric
-                processed_data.append(year_data)
-            
-            # Combine all years
-            df_processed = pd.concat(processed_data, ignore_index=True)
-            
-            # Convert value column to float
-            df_processed['value'] = pd.to_numeric(df_processed['value'], errors='coerce')
-            
-            # Drop rows with missing values
-            df_processed = df_processed.dropna(subset=['value'])
+            if not records:
+                print(f"No records to store for {metric_name}")
+                continue
             
             # Store in PostgreSQL
-            if pg_conn is not None:
-                try:
-                    with pg_conn.cursor() as cur:
-                        # Convert DataFrame to list of tuples for PostgreSQL
-                        values = []
-                        for _, row in df_processed.iterrows():
-                            try:
-                                values.append((
-                                    str(row['country']),
-                                    int(row['year']),
-                                    str(metric),
-                                    float(row['value'])
-                                ))
-                            except (ValueError, TypeError) as e:
-                                print(f"Skipping row due to conversion error: {e}")
-                                continue
-                        
-                        if values:
-                            execute_values(cur, """
-                                INSERT INTO raw_education_data (country, year, metric_name, metric_value)
-                                VALUES %s
-                                ON CONFLICT (country, year, metric_name) 
-                                DO UPDATE SET metric_value = EXCLUDED.metric_value;
-                            """, values)
-                            pg_conn.commit()
-                            print(f"Stored {len(values)} records in PostgreSQL for {metric}")
-                except Exception as e:
-                    print(f"Error storing data in PostgreSQL: {str(e)}")
-                    pg_conn.rollback()
+            try:
+                with pg_conn.cursor() as cur:
+                    values = [(
+                        str(record['country']),
+                        int(record['year']),
+                        str(metric_name),
+                        float(record['value'])
+                    ) for record in records if all(k in record for k in ['country', 'year', 'value'])]
+                    
+                    if values:
+                        execute_values(cur, f"""
+                            INSERT INTO raw_education_data (country, year, metric_name, metric_value)
+                            VALUES %s
+                            ON CONFLICT (country, year, metric_name) 
+                            DO UPDATE SET metric_value = EXCLUDED.metric_value;
+                        """, values)
+                        pg_conn.commit()
+                        print(f"Stored {len(values)} records in PostgreSQL for {metric_name}")
+            except Exception as e:
+                print(f"Error storing data in PostgreSQL: {str(e)}")
+                pg_conn.rollback()
             
             # Store in MongoDB
-            if mongo_db is not None:
-                collection = mongo_db[metric]
-                # Convert DataFrame to records
-                records = df_processed.to_dict('records')
-                
-                # Store each record
-                successful_inserts = 0
+            try:
+                collection = mongo_db[metric_name]
                 for record in records:
-                    try:
-                        mongo_doc = {
-                            'country': str(record['country']),
-                            'year': int(record['year']),
-                            'value': float(record['value']),
-                            'metadata': {
-                                'freq': str(record.get('freq', '')),
-                                'unit': str(record.get('unit', '')),
-                                'isced11': str(record.get('isced11', '')),
-                            },
-                            'updated_at': datetime.now()
-                        }
+                    if all(k in record for k in ['country', 'year', 'value']):
                         collection.update_one(
-                            {'country': mongo_doc['country'], 'year': mongo_doc['year']},
-                            {'$set': mongo_doc},
+                            {
+                                'country': str(record['country']),
+                                'year': int(record['year'])
+                            },
+                            {
+                                '$set': {
+                                    'value': float(record['value']),
+                                    'metric_type': metric_name,
+                                    'updated_at': datetime.now()
+                                }
+                            },
                             upsert=True
                         )
-                        successful_inserts += 1
-                    except (ValueError, TypeError) as e:
-                        print(f"Skipping MongoDB record due to conversion error: {e}")
-                        continue
-                
-                print(f"Stored {successful_inserts} records in MongoDB for {metric}")
-            
-            print(f"Successfully stored {metric} data")
+                print(f"Successfully stored records in MongoDB for {metric_name}")
+            except Exception as e:
+                print(f"Error storing data in MongoDB: {str(e)}")
             
         except Exception as e:
-            print(f"Error processing {metric} data: {str(e)}")
-            if pg_conn is not None:
-                pg_conn.rollback()
-            import traceback
-            print(traceback.format_exc())
+            print(f"Error processing {metric_name}: {str(e)}")
             continue
 
 # 7. Data Analysis Functions
-def analyze_education_metrics(mongo_db, metric_name):
-    """
-    Analyze education metrics from MongoDB
-    
-    Args:
-        mongo_db: MongoDB connection
-        metric_name: Name of the metric to analyze
-    """
+def analyze_education_metrics(mongo_db, country=None, year_range=None):
+    """Analyze education metrics with advanced analytics"""
     try:
-        # Get data from MongoDB
-        collection = mongo_db[metric_name]
-        cursor = collection.find({}, {'country': 1, 'year': 1, 'value': 1, '_id': 0})
+        results = {}
+        metrics = ['education_investment', 'student_teacher_ratio', 'completion_rate']
+        
+        for metric in metrics:
+            collection = mongo_db[metric]
+            
+            # Build query
+            query = {}
+            if country:
+                query['country'] = country
+            if year_range:
+                query['year'] = {'$gte': year_range[0], '$lte': year_range[1]}
+            
+            # Get data
+            cursor = collection.find(query)
+            df = pd.DataFrame(list(cursor))
+            
+            if not df.empty:
+                # Basic statistics
+                stats = {
+                    'mean': df['value'].mean(),
+                    'median': df['value'].median(),
+                    'std': df['value'].std(),
+                    'min': df['value'].min(),
+                    'max': df['value'].max()
+                }
+                
+                # Trend analysis
+                if len(df) > 1:
+                    df_sorted = df.sort_values('year')
+                    trend = np.polyfit(df_sorted['year'], df_sorted['value'], 1)
+                    stats['trend'] = {
+                        'slope': trend[0],
+                        'intercept': trend[1]
+                    }
+                
+                # Year-over-year change
+                if len(df) > 1:
+                    df_sorted = df.sort_values('year')
+                    df_sorted['yoy_change'] = df_sorted['value'].pct_change()
+                    stats['avg_yoy_change'] = df_sorted['yoy_change'].mean()
+                
+                results[metric] = stats
+        
+        return results
+        
+    except Exception as e:
+        logging.error(f"Error analyzing education metrics: {str(e)}")
+        return None
+
+def generate_forecasts(mongo_db, metric, country, forecast_years=5):
+    """Generate forecasts using time series analysis"""
+    try:
+        # Get historical data
+        collection = mongo_db[metric]
+        cursor = collection.find({'country': country})
         df = pd.DataFrame(list(cursor))
         
         if df.empty:
-            print(f"No data found for {metric_name}")
             return None
-        
-        # Group by year and calculate statistics
-        stats = df.groupby('year')['value'].agg([
-            ('mean', 'mean'),
-            ('std', 'std'),
-            ('min', 'min'),
-            ('max', 'max')
-        ]).reset_index()
-        
-        # Store analysis results in MongoDB
-        analysis_collection = mongo_db['analysis_results']
-        
-        for _, row in stats.iterrows():
-            analysis_doc = {
-                'metric': metric_name,
-                'year': int(row['year']),
-                'statistics': {
-                    'mean': float(row['mean']),
-                    'std': float(row['std']),
-                    'min': float(row['min']),
-                    'max': float(row['max'])
-                },
-                'updated_at': datetime.now()
-            }
             
-            analysis_collection.update_one(
-                {'metric': metric_name, 'year': analysis_doc['year']},
-                {'$set': analysis_doc},
-                upsert=True
-            )
+        # Prepare time series data
+        df_sorted = df.sort_values('year')
         
-        print(f"Analysis completed for {metric_name}")
-        return {'metric': metric_name, 'stats': stats}
+        # Fit ARIMA model
+        model = ARIMA(df_sorted['value'], order=(1,1,1))
+        results = model.fit()
+        
+        # Generate forecasts
+        forecast = results.forecast(steps=forecast_years)
+        
+        # Prepare forecast results
+        forecast_years = range(df_sorted['year'].max() + 1, 
+                             df_sorted['year'].max() + forecast_years + 1)
+        
+        forecast_data = {
+            'years': list(forecast_years),
+            'values': forecast.values.tolist(),
+            'confidence_intervals': results.get_forecast(steps=forecast_years).conf_int().values.tolist()
+        }
+        
+        return forecast_data
         
     except Exception as e:
-        print(f"Error analyzing {metric_name}: {str(e)}")
+        logging.error(f"Error generating forecasts: {str(e)}")
+        return None
+
+def compare_countries(mongo_db, countries, metric, year_range=None):
+    """Compare education metrics across countries"""
+    try:
+        collection = mongo_db[metric]
+        
+        # Build query
+        query = {'country': {'$in': countries}}
+        if year_range:
+            query['year'] = {'$gte': year_range[0], '$lte': year_range[1]}
+        
+        # Get data
+        cursor = collection.find(query)
+        df = pd.DataFrame(list(cursor))
+        
+        if df.empty:
+            return None
+        
+        # Calculate statistics for each country
+        results = {}
+        for country in countries:
+            country_data = df[df['country'] == country]
+            if not country_data.empty:
+                stats = {
+                    'mean': country_data['value'].mean(),
+                    'latest_value': country_data.loc[country_data['year'].idxmax(), 'value'],
+                    'trend': np.polyfit(country_data['year'], country_data['value'], 1)[0]
+                }
+                results[country] = stats
+        
+        return results
+        
+    except Exception as e:
+        logging.error(f"Error comparing countries: {str(e)}")
         return None
 
 def forecast_metric(mongo_db, metric_name, periods=5):
@@ -467,5 +711,79 @@ def run_education_analysis():
     
     return {'analysis': analysis_results, 'forecasts': forecast_results}
 
+def main():
+    """Main function to run education data analysis"""
+    try:
+        # Connect to databases
+        pg_conn = get_postgres_connection()
+        mongo_db = get_mongodb_connection()
+        
+        if pg_conn is None or mongo_db is None:
+            print("Failed to connect to databases")
+            return
+        
+        try:
+            # Test MongoDB connection
+            mongo_db.command('ping')
+        except Exception as e:
+            print(f"MongoDB connection test failed: {str(e)}")
+            return
+            
+        # Set up PostgreSQL database
+        setup_postgres_database(pg_conn)
+        
+        # Collect and store data
+        print("\nCollecting and storing education data...")
+        collect_and_store_education_data(pg_conn, mongo_db)
+        
+        # Analyze metrics for EU countries
+        print("\nAnalyzing education metrics...")
+        eu_countries = ['DE', 'FR', 'IT', 'ES', 'NL']  # Example EU countries
+        year_range = (2010, 2023)
+        
+        for country in eu_countries:
+            print(f"\nAnalyzing data for {country}")
+            
+            # Get metrics analysis
+            metrics = analyze_education_metrics(mongo_db, country, year_range)
+            if metrics:
+                print(f"\nMetrics Analysis for {country}:")
+                for metric, stats in metrics.items():
+                    print(f"\n{metric.upper()}:")
+                    print(f"Mean: {stats['mean']:.2f}")
+                    print(f"Median: {stats['median']:.2f}")
+                    if 'trend' in stats:
+                        print(f"Trend slope: {stats['trend']['slope']:.4f}")
+            
+            # Generate forecasts
+            print(f"\nGenerating forecasts for {country}")
+            for metric in ['education_investment', 'student_teacher_ratio', 'completion_rate']:
+                forecast = generate_forecasts(mongo_db, metric, country)
+                if forecast:
+                    print(f"\n{metric.upper()} Forecast:")
+                    for year, value in zip(forecast['years'], forecast['values']):
+                        print(f"{year}: {value:.2f}")
+        
+        # Compare countries
+        print("\nComparing countries...")
+        for metric in ['education_investment', 'student_teacher_ratio', 'completion_rate']:
+            comparison = compare_countries(mongo_db, eu_countries, metric, year_range)
+            if comparison:
+                print(f"\n{metric.upper()} Comparison:")
+                for country, stats in comparison.items():
+                    print(f"\n{country}:")
+                    print(f"Mean: {stats['mean']:.2f}")
+                    print(f"Latest Value: {stats['latest_value']:.2f}")
+                    print(f"Trend: {stats['trend']:.4f}")
+        
+    except Exception as e:
+        print(f"Error in main function: {str(e)}")
+        import traceback
+        print(traceback.format_exc())
+    
+    finally:
+        if pg_conn is not None:
+            pg_conn.close()
+
 if __name__ == "__main__":
-    results = run_education_analysis()
+    main()
