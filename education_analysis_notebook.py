@@ -36,18 +36,18 @@ load_dotenv()
 # PostgreSQL configuration
 POSTGRES_CONFIG = {
     'dbname': os.getenv('POSTGRES_DB', 'education_db'),
-    'user': os.getenv('POSTGRES_USER', 'postgres'),
-    'password': os.getenv('POSTGRES_PASSWORD', 'postgres'),
-    'host': os.getenv('POSTGRES_HOST', 'localhost'),
-    'port': os.getenv('POSTGRES_PORT', '5432')
+    'user': os.getenv('POSTGRES_USER'),
+    'password': os.getenv('POSTGRES_PASSWORD'),
+    'host': os.getenv('POSTGRES_HOST'),
+    'port': os.getenv('POSTGRES_PORT')
 }
 
 # MongoDB configuration
-MONGODB_URI = 'mongodb+srv://nci:8YWJ0hBAGmZcNo6q74UQ@cluster0.x1ijb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-MONGODB_CONFIG = {
-    'uri': MONGODB_URI,
-    'db': os.getenv('MONGODB_DB', 'education_db')
-}
+MONGODB_HOST = os.getenv('MONGODB_HOST')
+MONGODB_PORT = int(os.getenv('MONGODB_PORT'))
+MONGODB_USER = os.getenv('MONGODB_USER')
+MONGODB_PASSWORD = os.getenv('MONGODB_PASSWORD')
+MONGODB_DB = os.getenv('MONGODB_DB')
 
 # 4. Database Connection Functions
 def get_postgres_connection():
@@ -63,8 +63,14 @@ def get_postgres_connection():
 def get_mongodb_connection():
     """Create a connection to MongoDB database"""
     try:
-        client = MongoClient(MONGODB_CONFIG['uri'])
-        db = client[MONGODB_CONFIG['db']]
+        client = MongoClient(
+            host=MONGODB_HOST,
+            port=MONGODB_PORT,
+            username=MONGODB_USER,
+            password=MONGODB_PASSWORD,
+            authSource='admin'
+        )
+        db = client[MONGODB_DB]
         print("Successfully connected to MongoDB")
         return db
     except Exception as e:
@@ -238,215 +244,228 @@ def collect_and_store_education_data(pg_conn, mongo_db):
             continue
 
 # 7. Data Analysis Functions
-def analyze_education_metrics(pg_conn, metric_name):
-    """Analyze education metrics from PostgreSQL database"""
-    if pg_conn is None:
-        return None
+def analyze_education_metrics(mongo_db, metric_name):
+    """
+    Analyze education metrics from MongoDB
     
+    Args:
+        mongo_db: MongoDB connection
+        metric_name: Name of the metric to analyze
+    """
     try:
-        with pg_conn.cursor() as cur:
-            # Calculate basic statistics
-            cur.execute("""
-                SELECT 
-                    year,
-                    AVG(metric_value) as mean_value,
-                    STDDEV(metric_value) as std_value,
-                    MIN(metric_value) as min_value,
-                    MAX(metric_value) as max_value
-                FROM raw_education_data
-                WHERE metric_name = %s
-                GROUP BY year
-                ORDER BY year;
-            """, (metric_name,))
-            
-            results = cur.fetchall()
-            stats_df = pd.DataFrame(results, 
-                                  columns=['year', 'mean', 'std', 'min', 'max'])
-            
-            # Create visualizations
-            trend_fig = px.line(stats_df, x='year', y='mean',
-                              title=f'{metric_name} Trend Over Time')
-            
-            # Store analysis results
-            values = [(
-                'basic_stats',
-                metric_name,
-                row['year'],
-                None,  # country
-                row['mean']
-            ) for _, row in stats_df.iterrows()]
-            
-            execute_values(cur, """
-                INSERT INTO analysis_results 
-                (analysis_type, metric_name, year, country, result_value)
-                VALUES %s
-            """, values)
-            
-            pg_conn.commit()
-            
-            return {
-                'stats': stats_df,
-                'trend_plot': trend_fig
+        # Get data from MongoDB
+        collection = mongo_db[metric_name]
+        cursor = collection.find({}, {'country': 1, 'year': 1, 'value': 1, '_id': 0})
+        df = pd.DataFrame(list(cursor))
+        
+        if df.empty:
+            print(f"No data found for {metric_name}")
+            return None
+        
+        # Group by year and calculate statistics
+        stats = df.groupby('year')['value'].agg([
+            ('mean', 'mean'),
+            ('std', 'std'),
+            ('min', 'min'),
+            ('max', 'max')
+        ]).reset_index()
+        
+        # Store analysis results in MongoDB
+        analysis_collection = mongo_db['analysis_results']
+        
+        for _, row in stats.iterrows():
+            analysis_doc = {
+                'metric': metric_name,
+                'year': int(row['year']),
+                'statistics': {
+                    'mean': float(row['mean']),
+                    'std': float(row['std']),
+                    'min': float(row['min']),
+                    'max': float(row['max'])
+                },
+                'updated_at': datetime.now()
             }
             
+            analysis_collection.update_one(
+                {'metric': metric_name, 'year': analysis_doc['year']},
+                {'$set': analysis_doc},
+                upsert=True
+            )
+        
+        print(f"Analysis completed for {metric_name}")
+        return {'metric': metric_name, 'stats': stats}
+        
     except Exception as e:
         print(f"Error analyzing {metric_name}: {str(e)}")
         return None
 
-def forecast_metric(pg_conn, metric_name, periods=5):
-    """Forecast future values for a metric"""
-    if pg_conn is None:
-        return None
+def forecast_metric(mongo_db, metric_name, periods=5):
+    """
+    Forecast future values for a metric using data from MongoDB
     
+    Args:
+        mongo_db: MongoDB connection
+        metric_name: Name of the metric to forecast
+        periods: Number of periods to forecast
+    """
     try:
-        with pg_conn.cursor() as cur:
-            # Get historical data
-            cur.execute("""
-                SELECT year, AVG(metric_value) as avg_value
-                FROM raw_education_data
-                WHERE metric_name = %s
-                GROUP BY year
-                ORDER BY year
-            """, (metric_name,))
-            
-            results = cur.fetchall()
-            historical_df = pd.DataFrame(results, columns=['year', 'value'])
-            
-            # Fit SARIMA model
-            model = SARIMAX(historical_df['value'], 
-                          order=(1, 1, 1), 
-                          seasonal_order=(1, 1, 1, 12))
-            results = model.fit()
-            
-            # Generate forecast
-            forecast = results.forecast(periods)
-            
-            # Store forecast results
-            last_year = historical_df['year'].max()
-            forecast_values = [(
-                metric_name,
-                last_year + i + 1,
-                float(forecast[i]),
-                float(results.conf_int().iloc[i, 0]),
-                float(results.conf_int().iloc[i, 1])
-            ) for i in range(len(forecast))]
-            
-            execute_values(cur, """
-                INSERT INTO forecasts 
-                (metric_name, forecast_year, forecast_value, 
-                 confidence_lower, confidence_upper)
-                VALUES %s
-            """, forecast_values)
-            
-            pg_conn.commit()
-            
-            # Create visualization
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=historical_df['year'], 
-                                   y=historical_df['value'],
-                                   name='Historical'))
-            fig.add_trace(go.Scatter(x=range(last_year + 1, last_year + periods + 1),
-                                   y=forecast,
-                                   name='Forecast'))
-            
-            return {
-                'forecast': forecast,
-                'plot': fig
+        # Get data from MongoDB
+        collection = mongo_db[metric_name]
+        cursor = collection.find({}, {'country': 1, 'year': 1, 'value': 1, '_id': 0})
+        df = pd.DataFrame(list(cursor))
+        
+        if df.empty:
+            print(f"No data found for {metric_name}")
+            return None
+        
+        # Calculate average value per year
+        yearly_avg = df.groupby('year')['value'].mean().reset_index()
+        yearly_avg = yearly_avg.sort_values('year')
+        
+        # Prepare time series data
+        y = yearly_avg['value']
+        
+        # Create and fit SARIMA model
+        model = SARIMAX(y, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
+        results = model.fit()
+        
+        # Make forecast
+        forecast = results.forecast(periods)
+        conf_int = results.get_forecast(periods).conf_int()
+        
+        # Generate future years
+        last_year = yearly_avg['year'].max()
+        future_years = range(last_year + 1, last_year + periods + 1)
+        
+        # Store forecast results in MongoDB
+        forecast_collection = mongo_db['forecast_results']
+        
+        for i, year in enumerate(future_years):
+            forecast_doc = {
+                'metric': metric_name,
+                'forecast_year': int(year),
+                'forecast_value': float(forecast[i]),
+                'confidence_interval': {
+                    'lower': float(conf_int.iloc[i, 0]),
+                    'upper': float(conf_int.iloc[i, 1])
+                },
+                'updated_at': datetime.now()
             }
             
+            forecast_collection.update_one(
+                {'metric': metric_name, 'forecast_year': forecast_doc['forecast_year']},
+                {'$set': forecast_doc},
+                upsert=True
+            )
+        
+        print(f"Forecast completed for {metric_name}")
+        return {
+            'metric': metric_name,
+            'forecast': forecast,
+            'conf_int': conf_int,
+            'years': list(future_years)
+        }
+        
     except Exception as e:
         print(f"Error forecasting {metric_name}: {str(e)}")
         return None
 
-def store_results_in_mongodb(mongo_db, analysis_results, forecast_results):
-    """Store analysis and forecast results in MongoDB"""
-    try:
-        # Store analysis results
-        analysis_collection = mongo_db['analysis_results']
-        for metric, results in analysis_results.items():
-            if results is not None:
-                for year_data in results['stats'].to_dict('records'):
-                    analysis_collection.update_one(
-                        {'metric': metric, 'year': year_data['year']},
-                        {'$set': {
-                            'mean_value': year_data['mean'],
-                            'std_value': year_data['std'],
-                            'min_value': year_data['min'],
-                            'max_value': year_data['max'],
-                            'updated_at': datetime.now()
-                        }},
-                        upsert=True
-                    )
-        
-        # Store forecast results
-        forecast_collection = mongo_db['forecast_results']
-        for metric, results in forecast_results.items():
-            if results is not None:
-                for i, forecast in enumerate(results['forecast']):
-                    forecast_collection.update_one(
-                        {'metric': metric, 'forecast_year': results['plot'].data[1].x[i]},
-                        {'$set': {
-                            'forecast_value': forecast,
-                            'confidence_lower': results['plot'].data[1].error_y.array[i][0],
-                            'confidence_upper': results['plot'].data[1].error_y.array[i][1],
-                            'updated_at': datetime.now()
-                        }},
-                        upsert=True
-                    )
-        print("Successfully stored analysis and forecast results in MongoDB")
-    except Exception as e:
-        print(f"Error storing results in MongoDB: {str(e)}")
-
-# 8. Main Analysis Function
-def run_education_analysis():
-    """Run the complete education data analysis"""
-    pg_conn = None
-    mongo_db = None
-    try:
-        # Connect to databases
-        pg_conn = get_postgres_connection()
-        mongo_db = get_mongodb_connection()
-        
-        if pg_conn is None or mongo_db is None:
-            raise Exception("Failed to connect to databases")
-        
-        # Setup schema
-        setup_postgres_schema(pg_conn)
-        
-        # Collect and store data
-        collect_and_store_education_data(pg_conn, mongo_db)
-        
-        # Analyze each metric
-        metrics = ['education_investment', 'student_teacher_ratio', 
-                  'completion_rate', 'literacy_rate']
-        
-        analysis_results = {}
-        forecast_results = {}
-        
-        for metric in metrics:
-            print(f"\nAnalyzing {metric}...")
-            analysis_results[metric] = analyze_education_metrics(pg_conn, metric)
-            forecast_results[metric] = forecast_metric(pg_conn, metric)
-        
-        # Store results in MongoDB
-        if analysis_results and forecast_results:
-            store_results_in_mongodb(mongo_db, analysis_results, forecast_results)
-        
-        return {
-            'analysis_results': analysis_results,
-            'forecast_results': forecast_results
-        }
-        
-    except Exception as e:
-        print(f"Error in analysis: {str(e)}")
-        return None
+def visualize_metric_analysis(mongo_db, metric_name):
+    """
+    Create visualizations for metric analysis using data from MongoDB
     
-    finally:
-        # Clean up connections
-        if pg_conn is not None:
-            pg_conn.close()
-        if 'mongo_db' in locals() and mongo_db is not None and mongo_db.client is not None:
-            mongo_db.client.close()
+    Args:
+        mongo_db: MongoDB connection
+        metric_name: Name of the metric to visualize
+    """
+    try:
+        # Get raw data
+        collection = mongo_db[metric_name]
+        cursor = collection.find({}, {'country': 1, 'year': 1, 'value': 1, '_id': 0})
+        df = pd.DataFrame(list(cursor))
+        
+        if df.empty:
+            print(f"No data found for {metric_name}")
+            return None
+        
+        # Create time series plot
+        fig1 = px.line(df, x='year', y='value', color='country',
+                      title=f'{metric_name} Over Time by Country')
+        fig1.show()
+        
+        # Get analysis results
+        analysis_collection = mongo_db['analysis_results']
+        cursor = analysis_collection.find({'metric': metric_name})
+        analysis_df = pd.DataFrame(list(cursor))
+        
+        if not analysis_df.empty:
+            # Create statistics plot
+            fig2 = go.Figure()
+            fig2.add_trace(go.Scatter(x=analysis_df['year'], y=analysis_df['statistics'].apply(lambda x: x['mean']),
+                                    mode='lines+markers', name='Mean'))
+            fig2.add_trace(go.Scatter(x=analysis_df['year'], y=analysis_df['statistics'].apply(lambda x: x['mean'] + x['std']),
+                                    mode='lines', name='Mean + Std', line=dict(dash='dash')))
+            fig2.add_trace(go.Scatter(x=analysis_df['year'], y=analysis_df['statistics'].apply(lambda x: x['mean'] - x['std']),
+                                    mode='lines', name='Mean - Std', line=dict(dash='dash')))
+            fig2.update_layout(title=f'{metric_name} Statistics Over Time')
+            fig2.show()
+        
+        # Get forecast results
+        forecast_collection = mongo_db['forecast_results']
+        cursor = forecast_collection.find({'metric': metric_name})
+        forecast_df = pd.DataFrame(list(cursor))
+        
+        if not forecast_df.empty:
+            # Create forecast plot
+            fig3 = go.Figure()
+            fig3.add_trace(go.Scatter(x=forecast_df['forecast_year'], y=forecast_df['forecast_value'],
+                                    mode='lines+markers', name='Forecast'))
+            fig3.add_trace(go.Scatter(x=forecast_df['forecast_year'],
+                                    y=forecast_df['confidence_interval'].apply(lambda x: x['upper']),
+                                    mode='lines', name='Upper CI', line=dict(dash='dash')))
+            fig3.add_trace(go.Scatter(x=forecast_df['forecast_year'],
+                                    y=forecast_df['confidence_interval'].apply(lambda x: x['lower']),
+                                    mode='lines', name='Lower CI', line=dict(dash='dash')))
+            fig3.update_layout(title=f'{metric_name} Forecast')
+            fig3.show()
+        
+    except Exception as e:
+        print(f"Error visualizing {metric_name}: {str(e)}")
+
+def run_education_analysis():
+    """Run the complete education data analysis using MongoDB"""
+    # Connect to MongoDB
+    mongo_db = get_mongodb_connection()
+    if mongo_db is None:
+        return
+    
+    metrics = [
+        'education_investment',
+        'student_teacher_ratio',
+        'completion_rate',
+        'literacy_rate'
+    ]
+    
+    analysis_results = {}
+    forecast_results = {}
+    
+    for metric in metrics:
+        print(f"\nAnalyzing {metric}...")
+        
+        # Perform analysis
+        analysis_result = analyze_education_metrics(mongo_db, metric)
+        if analysis_result:
+            analysis_results[metric] = analysis_result
+        
+        # Generate forecast
+        forecast_result = forecast_metric(mongo_db, metric)
+        if forecast_result:
+            forecast_results[metric] = forecast_result
+        
+        # Create visualizations
+        visualize_metric_analysis(mongo_db, metric)
+    
+    return {'analysis': analysis_results, 'forecasts': forecast_results}
 
 if __name__ == "__main__":
     results = run_education_analysis()

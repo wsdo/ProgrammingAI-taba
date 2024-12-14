@@ -18,6 +18,7 @@ import logging
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from pymongo import MongoClient
 
 # 设置日志
 logging.basicConfig(
@@ -25,6 +26,31 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
+# MongoDB configuration
+MONGODB_HOST = os.getenv('MONGODB_HOST')
+MONGODB_PORT = int(os.getenv('MONGODB_PORT'))
+MONGODB_USER = os.getenv('MONGODB_USER')
+MONGODB_PASSWORD = os.getenv('MONGODB_PASSWORD')
+MONGODB_DB = os.getenv('MONGODB_DB')
+
+# Create MongoDB client
+def get_mongodb_connection():
+    """Create a connection to MongoDB database"""
+    try:
+        client = MongoClient(
+            host=MONGODB_HOST,
+            port=MONGODB_PORT,
+            username=MONGODB_USER,
+            password=MONGODB_PASSWORD,
+            authSource='admin'
+        )
+        db = client[MONGODB_DB]
+        logging.info("Successfully connected to MongoDB")
+        return db
+    except Exception as e:
+        logging.error(f"Error connecting to MongoDB: {str(e)}")
+        return None
 
 # 2. 数据收集函数
 def collect_education_data():
