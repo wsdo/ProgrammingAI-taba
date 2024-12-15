@@ -1,5 +1,6 @@
 import nbformat as nbf
 import re
+import sys
 
 def create_notebook_from_py(py_file, ipynb_file):
     # Read the Python file
@@ -37,7 +38,11 @@ def create_notebook_from_py(py_file, ipynb_file):
         nbf.write(nb, f)
 
 if __name__ == '__main__':
-    py_file = 'economic_analysis_with_mongodb.py'
-    ipynb_file = 'economic_analysis_with_mongodb.ipynb'
-    create_notebook_from_py(py_file, ipynb_file)
-    print(f"Successfully converted {py_file} to {ipynb_file}")
+    if len(sys.argv) != 3:
+        print("Usage: python convert_to_notebook.py input.py output.ipynb")
+        sys.exit(1)
+        
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
+    create_notebook_from_py(input_file, output_file)
+    print(f"Successfully converted {input_file} to {output_file}")
