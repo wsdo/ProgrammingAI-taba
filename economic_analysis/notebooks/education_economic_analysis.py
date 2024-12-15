@@ -314,129 +314,128 @@ def perform_regional_analysis(data):
 regional_analysis = perform_regional_analysis(merged_data)
 
 # %% [markdown]
-# ## 5. 深度分析总结
+# ## 5. In-Depth Analysis Summary
 # 
-# ### 5.1 关键发现
+# ### 5.1 Key Findings
 # 
-# #### 1. 教育投资与经济增长的直接关系
-# - **短期影响**：
-#   * 教育投资与GDP增长率显示出{correlation_short_term:.2f}的相关性
-#   * 就业率与教育投资呈现{correlation_employment:.2f}的正相关
-# - **长期效应**：
-#   * 3年滞后效应显示最强相关性，说明教育投资见效相对较快
-#   * 5-10年期间显示持续性正面影响，但强度逐渐减弱
+# #### 1. Direct Relationship between Education Investment and Economic Growth
+# - **Short-term Impact**:
+#   * Education investment shows a correlation of {correlation_short_term:.2f} with GDP growth rate
+#   * Employment rate demonstrates a {correlation_employment:.2f} positive correlation with education investment
+# - **Long-term Effects**:
+#   * 3-year lag effect shows the strongest correlation, indicating relatively quick returns on education investment
+#   * 5-10 year period shows continued positive impact, though with diminishing strength
 # 
-# #### 2. 区域差异分析
-# - **发达经济体**：
-#   * 教育投资回报率相对稳定
-#   * 创新驱动型增长与教育质量高度相关
-# - **新兴经济体**：
-#   * 教育投资边际效益较高
-#   * 技能培训与就业市场匹配度是关键因素
+# #### 2. Regional Differences Analysis
+# - **Developed Economies**:
+#   * Relatively stable returns on education investment
+#   * Innovation-driven growth highly correlated with education quality
+# - **Emerging Economies**:
+#   * Higher marginal benefits from education investment
+#   * Skills training and labor market matching are key factors
 # 
-# #### 3. 因果关系验证
-# - **Granger因果检验结果**：
-#   * 教育投资→经济增长：显著性水平p<0.05
-#   * 最优滞后期：3-5年
-#   * 双向因果关系存在，但教育投资对经济增长的影响更显著
+# #### 3. Causality Verification
+# - **Granger Causality Test Results**:
+#   * Education Investment → Economic Growth: Significance level p<0.05
+#   * Optimal lag period: 3-5 years
+#   * Bidirectional causality exists, with education investment showing stronger influence on economic growth
 # 
-# ### 5.2 深层机制分析
+# ### 5.2 Deep Mechanism Analysis
 # 
-# #### 1. 人力资本积累
-# - **技能提升**：
-#   * 劳动力市场适应性增强
-#   * 创新能力提升
-# - **知识溢出效应**：
-#   * 产业集群效应增强
-#   * 技术扩散加速
+# #### 1. Human Capital Accumulation
+# - **Skill Enhancement**:
+#   * Increased labor market adaptability
+#   * Enhanced innovation capability
+# - **Knowledge Spillover Effects**:
+#   * Strengthened industrial cluster effects
+#   * Accelerated technology diffusion
 # 
-# #### 2. 产业结构优化
-# - **高技术产业发展**：
-#   * 教育投资推动产业升级
-#   * 知识密集型产业比重上升
-# - **创新生态系统**：
-#   * 产学研协同效应增强
-#   * 创新创业活力提升
+# #### 2. Industrial Structure Optimization
+# - **High-tech Industry Development**:
+#   * Education investment driving industrial upgrading
+#   * Increased proportion of knowledge-intensive industries
+# - **Innovation Ecosystem**:
+#   * Enhanced industry-academia-research collaboration
+#   * Improved innovation and entrepreneurship vitality
 # 
-# #### 3. 社会发展影响
-# - **收入分配**：
-#   * 教育投资助力收入差距缩小
-#   * 社会流动性增加
-# - **可持续发展**：
-#   * 环境意识提升
-#   * 社会治理能力增强
+# #### 3. Social Development Impact
+# - **Income Distribution**:
+#   * Education investment helping reduce income gaps
+#   * Increased social mobility
+# - **Sustainable Development**:
+#   * Enhanced environmental awareness
+#   * Improved social governance capabilities
 # 
-# ### 5.3 政策建议
+# ### 5.3 Policy Recommendations
 # 
-# #### 1. 教育投资策略
-# - **投资优化**：
-#   * 根据产业发展需求调整教育投资结构
-#   * 加强职业教育和终身学习体系建设
-# - **质量提升**：
-#   * 推进教育评估体系改革
-#   * 加强国际教育合作
+# #### 1. Education Investment Strategy
+# - **Investment Optimization**:
+#   * Adjust education investment structure based on industry development needs
+#   * Strengthen vocational education and lifelong learning systems
+# - **Quality Enhancement**:
+#   * Promote education evaluation system reform
+#   * Strengthen international education cooperation
 # 
-# #### 2. 产业政策协同
-# - **人才培养**：
-#   * 加强产业需求导向的专业设置
-#   * 建立产学研合作平台
-# - **创新驱动**：
-#   * 支持高校创新创业教育
-#   * 完善知识产权保护体系
+# #### 2. Industry Policy Coordination
+# - **Talent Development**:
+#   * Strengthen industry-oriented professional settings
+#   * Establish industry-academia-research cooperation platforms
+# - **Innovation Drive**:
+#   * Support university innovation and entrepreneurship education
+#   * Improve intellectual property protection system
 # 
-# #### 3. 区域发展策略
-# - **差异化政策**：
-#   * 因地制宜制定教育投资计划
-#   * 促进区域教育资源均衡
-# - **国际合作**：
-#   * 推进教育国际化
-#   * 加强跨境教育合作
+# #### 3. Regional Development Strategy
+# - **Differentiated Policies**:
+#   * Develop education investment plans according to local conditions
+#   * Promote balanced regional education resources
+# - **International Cooperation**:
+#   * Promote education internationalization
+#   * Strengthen cross-border education cooperation
 # 
-# ### 5.4 未来展望
+# ### 5.4 Future Outlook
 # 
-# #### 1. 发展趋势
-# - **数字化转型**：
-#   * 在线教育与传统教育融合
-#   * 数字技能培训需求增加
-# - **全球化挑战**：
-#   * 国际教育竞争加剧
-#   * 人才流动加速
+# #### 1. Development Trends
+# - **Digital Transformation**:
+#   * Integration of online and traditional education
+#   * Increased demand for digital skills training
+# - **Globalization Challenges**:
+#   * Intensified international education competition
+#   * Accelerated talent mobility
 # 
-# #### 2. 研究展望
-# - **方法论创新**：
-#   * 引入机器学习方法优化预测模型
-#   * 开发更精确的教育投资效益评估工具
-# - **跨学科研究**：
-#   * 结合社会学、心理学等多学科视角
-#   * 深化教育经济学理论研究
+# #### 2. Research Outlook
+# - **Methodological Innovation**:
+#   * Introduce machine learning methods to optimize predictive models
+#   * Develop more accurate education investment benefit evaluation tools
+# - **Interdisciplinary Research**:
+#   * Combine sociology, psychology, and other disciplines to deepen education economics theory research
 # 
-# ### 5.5 研究局限
-# - **数据限制**：
-#   * 教育质量难以完全量化
-#   * 长期追踪数据不足
-# - **方法论限制**：
-#   * 因果关系识别的挑战
-#   * 外部因素影响难以完全控制
+# ### 5.5 Research Limitations
+# - **Data Limitations**:
+#   * Education quality difficult to fully quantify
+#   * Insufficient long-term tracking data
+# - **Methodological Limitations**:
+#   * Challenges in identifying causality
+#   * External factors difficult to fully control
+
+# %% [markdown]
+# ## 6. Technical Appendix
 # 
-# # %% [markdown]
-# ## 6. 技术附录
-# 
-# ### 6.1 数据处理方法
+# ### 6.1 Data Processing Methods
 # ```python
-# # 数据清洗和标准化流程
+# # Data cleaning and standardization process
 # def clean_and_standardize(data):
-#     # 移除异常值
+#     # Remove outliers
 #     data = remove_outliers(data)
-#     # 标准化处理
+#     # Standardize features
 #     data = standardize_features(data)
 #     return data
 # ```
 # 
-# ### 6.2 统计模型详情
+# ### 6.2 Statistical Model Details
 # ```python
-# # 回归模型规范
+# # Regression model specification
 # def regression_model():
-#     # 模型参数
+#     # Model parameters
 #     params = {
 #         'test_size': 0.2,
 #         'random_state': 42
@@ -444,11 +443,11 @@ regional_analysis = perform_regional_analysis(merged_data)
 #     return params
 # ```
 # 
-# ### 6.3 可视化代码
+# ### 6.3 Visualization Code
 # ```python
-# # 可视化函数
+# # Visualization function
 # def create_visualization():
-#     # 图表参数
+#     # Plot parameters
 #     plot_params = {
 #         'figsize': (12, 8),
 #         'style': 'seaborn'
