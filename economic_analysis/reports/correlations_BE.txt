@@ -1,0 +1,7 @@
+Correlation Analysis for BE
+=============================
+
+                 GDP  Employment  Inflation
+GDP         1.000000   -0.474773  -0.976967
+Employment -0.474773    1.000000   0.417746
+Inflation  -0.976967    0.417746   1.000000

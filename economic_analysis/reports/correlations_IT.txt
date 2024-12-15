@@ -1,0 +1,7 @@
+Correlation Analysis for IT
+=============================
+
+                 GDP  Employment  Inflation
+GDP         1.000000    0.098773  -0.316077
+Employment  0.098773    1.000000   0.502817
+Inflation  -0.316077    0.502817   1.000000

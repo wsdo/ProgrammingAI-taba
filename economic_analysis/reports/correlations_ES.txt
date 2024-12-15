@@ -1,0 +1,7 @@
+Correlation Analysis for ES
+=============================
+
+                 GDP  Employment  Inflation
+GDP         1.000000   -0.604885  -0.550305
+Employment -0.604885    1.000000   0.966163
+Inflation  -0.550305    0.966163   1.000000

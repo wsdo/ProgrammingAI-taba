@@ -7,6 +7,7 @@ This script analyzes education investment data from EU countries, including:
 3. Inter-country comparison
 4. Investment trend analysis
 5. Visualization
+6. Economic correlation analysis
 """
 
 import sys
@@ -17,6 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from dotenv import load_dotenv
+import logging
 
 # Add project root to Python path
 project_root = Path().absolute().parent
@@ -25,6 +27,7 @@ sys.path.append(str(project_root))
 # Import project modules
 from src.data_processing.db_manager import DatabaseManager
 from src.data_processing.data_processor import DataProcessor
+from src.data_processing.imf_data_processor import IMFDataProcessor
 
 # Set plotting style and parameters
 plt.style.use('seaborn-v0_8')
@@ -38,6 +41,7 @@ class EUEducationAnalysis:
         """Initialize analysis components"""
         self.db_manager = DatabaseManager()
         self.processor = DataProcessor()
+        self.imf_processor = IMFDataProcessor()
         self.data = None
         self.data_cleaned = None
         
@@ -95,6 +99,68 @@ class EUEducationAnalysis:
             ].groupby('year')['value'].mean()
             
         return trend
+    
+    def analyze_economic_correlation(self, start_year=None, end_year=None):
+        """Analyze correlation between education investment and economic indicators"""
+        if start_year is None:
+            start_year = self.data_cleaned['year'].min()
+        if end_year is None:
+            end_year = self.data_cleaned['year'].max()
+            
+        # Get economic data
+        countries = self.data_cleaned['geo_time_period'].unique().tolist()
+        
+        # Fetch GDP and employment data
+        gdp_data = self.imf_processor.fetch_gdp_data(countries, start_year, end_year)
+        employment_data = self.imf_processor.fetch_employment_data(countries, start_year, end_year)
+        
+        # Calculate correlations
+        correlations = {}
+        
+        # Group education data by country and year
+        edu_data = self.data_cleaned.groupby(['geo_time_period', 'year'])['value'].mean().reset_index()
+        
+        # Calculate correlation with GDP
+        if not gdp_data.empty:
+            gdp_correlations = {}
+            for country in countries:
+                country_edu = edu_data[edu_data['geo_time_period'] == country].set_index('year')['value']
+                country_gdp = gdp_data[gdp_data['country'] == country].set_index('year')['value']
+                if not country_edu.empty and not country_gdp.empty:
+                    correlation = country_edu.corr(country_gdp)
+                    gdp_correlations[country] = correlation
+            correlations['gdp'] = gdp_correlations
+            
+        # Calculate correlation with employment
+        if not employment_data.empty:
+            emp_correlations = {}
+            for country in countries:
+                country_edu = edu_data[edu_data['geo_time_period'] == country].set_index('year')['value']
+                country_emp = employment_data[employment_data['country'] == country].set_index('year')['value']
+                if not country_edu.empty and not country_emp.empty:
+                    correlation = country_edu.corr(country_emp)
+                    emp_correlations[country] = correlation
+            correlations['employment'] = emp_correlations
+            
+        return correlations
+        
+    def visualize_economic_correlation(self, correlation_type='gdp'):
+        """Visualize economic correlations"""
+        correlations = self.analyze_economic_correlation()
+        
+        if correlation_type in correlations:
+            plt.figure(figsize=(12, 6))
+            data = pd.Series(correlations[correlation_type])
+            data.plot(kind='bar')
+            plt.title(f'Education Investment vs {correlation_type.upper()} Correlation by Country')
+            plt.xlabel('Country')
+            plt.ylabel('Correlation Coefficient')
+            plt.xticks(rotation=45)
+            plt.tight_layout()
+            return plt.gcf()
+        else:
+            logging.warning(f"No correlation data available for {correlation_type}")
+            return None
     
     def visualize_data(self, plot_type='time_series', **kwargs):
         """Create visualizations for the analysis"""
@@ -157,6 +223,10 @@ def main():
     trend = analyzer.analyze_trends()
     print("\nTrend analysis completed")
     
+    # Analyze economic correlation
+    correlations = analyzer.analyze_economic_correlation()
+    print("\nEconomic correlation analysis completed")
+    
     # Create visualizations
     analyzer.visualize_data(plot_type='time_series')
     plt.show()
@@ -165,6 +235,12 @@ def main():
     plt.show()
     
     analyzer.visualize_data(plot_type='trend')
+    plt.show()
+    
+    analyzer.visualize_economic_correlation(correlation_type='gdp')
+    plt.show()
+    
+    analyzer.visualize_economic_correlation(correlation_type='employment')
     plt.show()
 
 if __name__ == '__main__':

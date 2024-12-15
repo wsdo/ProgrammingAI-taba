@@ -1,0 +1,35 @@
+Employment Analysis Results
+=========================
+
+
+Average Employment:
+  BE: 5.53
+  DE: 3.03
+  ES: 12.19
+  FR: 7.34
+  IT: 7.67
+  NL: 3.54
+
+Annual Changes:
+  BE: nan
+  DE: nan
+  ES: nan
+  FR: nan
+  IT: nan
+  NL: nan
+
+Peak Employment:
+  BE: 5.63 (Date: 2023-01-01)
+  DE: 3.07 (Date: 2023-07-01)
+  ES: 13.40 (Date: 2023-01-01)
+  FR: 7.70 (Date: 2023-10-01)
+  IT: 8.30 (Date: 2023-01-01)
+  NL: 3.67 (Date: 2023-01-01)
+
+Trough Employment:
+  BE: 5.40 (Date: 2023-04-01)
+  DE: 2.97 (Date: 2023-04-01)
+  ES: 11.70 (Date: 2023-04-01)
+  FR: 6.97 (Date: 2023-04-01)
+  IT: 7.30 (Date: 2023-07-01)
+  NL: 3.43 (Date: 2023-04-01)

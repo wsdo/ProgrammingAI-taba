@@ -1,0 +1,7 @@
+Correlation Analysis for NL
+=============================
+
+                 GDP  Employment  Inflation
+GDP         1.000000    0.098545   0.820953
+Employment  0.098545    1.000000   0.358875
+Inflation   0.820953    0.358875   1.000000

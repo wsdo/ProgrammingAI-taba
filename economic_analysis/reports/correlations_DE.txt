@@ -1,0 +1,7 @@
+Correlation Analysis for DE
+=============================
+
+                 GDP  Employment  Inflation
+GDP         1.000000   -0.134594   0.717354
+Employment -0.134594    1.000000  -0.704075
+Inflation   0.717354   -0.704075   1.000000
