@@ -3,6 +3,7 @@ Module for collecting education and economic data from Eurostat and other source
 """
 
 import os
+import json
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
