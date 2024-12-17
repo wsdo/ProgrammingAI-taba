@@ -1,6 +1,8 @@
+# + [markdown] magic_args="[markdown]"
 # # Education Investment Analysis
 #
 # This notebook analyzes education investment data across EU countries, including economic indicators and policy impacts.
+# -
 
 # !pip install pandas numpy matplotlib seaborn plotly psycopg2-binary pymongo python-dotenv eurostat statsmodels
 
@@ -44,7 +46,9 @@ plt.rcParams['figure.figsize'] = [12, 6]
 plt.rcParams['font.size'] = 12
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
+# + [markdown] magic_args="[markdown]"
 # ## Step 1: Data Collection and Storage
+# -
 
 # %%
 print("Step 1: Data Collection")
@@ -68,7 +72,9 @@ print("\nCollecting education policies...")
 policy_docs = collector.get_education_policies()
 print(f"Collected {len(policy_docs)} policy documents")
 
+# + [markdown] magic_args="[markdown]"
 # ## Step 2: Database Storage
+# -
 
 # %%
 print("\nStep 2: Data Storage")
@@ -123,7 +129,9 @@ if db_manager.mongo_db is not None:
 else:
     print("Skipping MongoDB storage as connection is not available")
 
+# + [markdown] magic_args="[markdown]"
 # ## Step 3: Data Retrieval and Analysis
+# -
 
 # %%
 print("\nStep 3: Data Retrieval and Analysis")
@@ -152,7 +160,9 @@ if db_manager.mongo_db is not None:
         print(f"Warning: Could not retrieve MongoDB data: {str(e)}")
         print("Continuing without policy data...")
 
+# + [markdown] magic_args="[markdown]"
 # ## Step 4: Data Analysis
+# -
 
 # %%
 print("\nStep 4: Data Analysis")
@@ -162,7 +172,9 @@ print("-" * 50)
 education_data_cleaned = cleaner.clean_education_data(education_data)
 print(f"\nCleaned education data shape: {education_data_cleaned.shape}")
 
+# + [markdown] magic_args="[markdown]"
 # ### Analysis 1: Major EU Countries Investment Trends
+# -
 
 # %%
 print("\nAnalyzing major EU countries...")
@@ -183,9 +195,6 @@ country_names = {
 plt.figure(figsize=(15, 8))
 colors = {'DE': 'blue', 'FR': 'red', 'IT': 'green', 'ES': 'orange', 'PL': 'purple'}
 
-# +
-plotted_countries = []
-
 for country in major_countries:
     country_data = major_country_data[major_country_data['geo_time_period'] == country]
     if not country_data.empty:
@@ -195,43 +204,16 @@ for country in major_countries:
                 label=country_names[country],
                 color=colors[country],
                 marker='o')
-        plotted_countries.append(country)
-        print(f"Plotted data for {country_names[country]}")
-
-# +
-plt.plot(country_data['year'], 
-         country_data['value'],
-         label=country_names[country],  # 添加标签
-         color=colors[country],
-         marker='o',
-         markersize=6,
-         linewidth=2,
-         linestyle='-')
 
 plt.title('Education Investment Trends in Major EU Countries')
 plt.xlabel('Year')
 plt.ylabel('Investment Value')
-
-# Only add legend if we have plotted countries
-if plotted_countries:
-    plt.legend()
-else:
-    print("Warning: No data was plotted!")
-
+plt.legend()
 plt.grid(True, linestyle='--', alpha=0.7)
 plt.gca().spines['top'].set_visible(False)
 plt.gca().spines['right'].set_visible(False)
 plt.tight_layout()
-
-# Debug: Print the axis limits
-print(f"\nPlot ranges - X: {plt.gca().get_xlim()}, Y: {plt.gca().get_ylim()}")
-
 plt.show()
-
-# Calculate and display CAGR
-print("\nCompound Annual Growth Rate (CAGR) by Country:")
-print("-" * 40)
-# -
 
 # %%
 # Calculate and display CAGR
@@ -252,7 +234,9 @@ for country in major_countries:
             cagr = (((last_year['value'] / first_year['value']) ** (1/years)) - 1) * 100
             print(f"{country_names[country]}: {cagr:.2f}%")
 
+# + [markdown] magic_args="[markdown]"
 # ### Analysis 2: Economic Correlation Analysis
+# -
 
 # %%
 print("\nAnalyzing correlation with economic indicators...")
@@ -286,7 +270,9 @@ if not merged_data.empty:
     print(f"Education Investment vs GDP per capita: {edu_gdp_corr:.2f}")
     print(f"Education Investment vs Employment Rate: {edu_emp_corr:.2f}")
 
+# + [markdown] magic_args="[markdown]"
 # ### Analysis 3: Policy Impact Analysis
+# -
 
 # %%
 if policy_docs:
@@ -319,7 +305,9 @@ if policy_docs:
                 print(f"Policy Year: {year}")
                 print(f"Average Investment Change: {change_pct:.2f}%")
 
+# + [markdown] magic_args="[markdown]"
 # ### Analysis 4: Investment Efficiency Analysis
+# -
 
 # %%
 print("\nAnalyzing Investment Efficiency...")
@@ -347,7 +335,9 @@ if not merged_data.empty:
     for _, row in top_efficient.iterrows():
         print(f"{row['geo_time_period']}: {row['investment_efficiency']:.2f}")
 
+# + [markdown] magic_args="[markdown]"
 # ## Step 5: Cleanup
+# -
 
 # %%
 print("\nStep 5: Cleanup")
