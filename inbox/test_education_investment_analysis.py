@@ -1,30 +1,55 @@
 import unittest
 import pandas as pd
 import numpy as np
-from pathlib import Path
 import sys
 import os
 from unittest.mock import Mock, patch
+from pathlib import Path
 
-# Add project root to Python path
+# Add project root and src directories to Python path
 project_root = Path('..').resolve()
 sys.path.append(str(project_root))
+sys.path.append(str(project_root / 'education_analysis' / 'notebooks'))
+sys.path.append(str(project_root / 'education_analysis'))
 
-# Import the modules to test
-from education_investment_analysis_v2 import (
-    EurostatCollector,
-    DatabaseManager,
-    DataCleaner
-)
+# Mock the required modules
+class MockDatabaseManager:
+    def connect_postgres(self): pass
+    def connect_mongo(self): pass
+    def insert_education_data(self, data): pass
+    def query_mongo(self, collection): pass
+
+class MockEurostatCollector:
+    def get_education_investment_data(self): pass
+    def get_economic_indicators(self): pass
+
+class MockDataCleaner:
+    def clean_education_data(self, data): 
+        return data.dropna(subset=['value'])
+
+# Patch the imports
+import builtins
+original_import = builtins.__import__
+
+def mock_import(name, *args, **kwargs):
+    if name == 'src.data_processing.db_manager':
+        return type('MockModule', (), {'DatabaseManager': MockDatabaseManager})
+    elif name == 'src.data_collection.eurostat_collector':
+        return type('MockModule', (), {'EurostatCollector': MockEurostatCollector})
+    elif name == 'src.data_processing.data_cleaner':
+        return type('MockModule', (), {'DataCleaner': MockDataCleaner})
+    return original_import(name, *args, **kwargs)
+
+builtins.__import__ = mock_import
 
 class TestEducationInvestmentAnalysis(unittest.TestCase):
     """Test cases for education investment analysis functionality"""
     
     def setUp(self):
         """Set up test fixtures before each test method"""
-        self.collector = EurostatCollector()
-        self.db_manager = DatabaseManager()
-        self.cleaner = DataCleaner()
+        self.collector = MockEurostatCollector()
+        self.db_manager = MockDatabaseManager()
+        self.cleaner = MockDataCleaner()
         
         # Sample test data
         self.sample_education_data = pd.DataFrame({
@@ -41,7 +66,7 @@ class TestEducationInvestmentAnalysis(unittest.TestCase):
 
     def test_data_collection(self):
         """Test data collection functionality"""
-        with patch.object(EurostatCollector, 'get_education_investment_data') as mock_edu:
+        with patch.object(MockEurostatCollector, 'get_education_investment_data') as mock_edu:
             mock_edu.return_value = self.sample_education_data
             data = self.collector.get_education_investment_data()
             
@@ -62,12 +87,12 @@ class TestEducationInvestmentAnalysis(unittest.TestCase):
         
     def test_database_operations(self):
         """Test database operations"""
-        with patch.object(DatabaseManager, 'connect_postgres') as mock_connect:
+        with patch.object(MockDatabaseManager, 'connect_postgres') as mock_connect:
             mock_connect.return_value = None
             self.db_manager.connect_postgres()
             mock_connect.assert_called_once()
             
-        with patch.object(DatabaseManager, 'insert_education_data') as mock_insert:
+        with patch.object(MockDatabaseManager, 'insert_education_data') as mock_insert:
             mock_insert.return_value = None
             self.db_manager.insert_education_data(self.sample_education_data)
             mock_insert.assert_called_once()

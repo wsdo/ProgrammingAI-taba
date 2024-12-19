@@ -1,4 +1,4 @@
-# Import required libraries
+sns.barplot(data=top_efficient, x='geo_time_period', y='investment_efficiency')# Import required libraries
 import sys
 import os
 import json

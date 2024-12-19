@@ -1,0 +1,132 @@
+2024-12-19 12:56:30,531 - INFO - Getting education investment data...
+2024-12-19 12:56:30,538 - INFO - Using cached education investment data
+2024-12-19 12:56:30,538 - INFO - Getting economic indicators data...
+2024-12-19 12:56:30,540 - INFO - Using cached economic indicators data
+2024-12-19 12:56:30,540 - INFO - Getting education policy documents...
+2024-12-19 12:56:34,125 - INFO - Successfully connected to PostgreSQL
+2024-12-19 12:56:34,125 - INFO - Attempting to connect to MongoDB at 47.91.31.227:27017
+2024-12-19 12:56:35,665 - INFO - Successfully connected to MongoDB
+2024-12-19 12:56:38,383 - INFO - Tables created successfully
+2024-12-19 12:56:40,698 - INFO - Saved batch 1 (1000 rows)
+2024-12-19 12:56:41,989 - INFO - Saved batch 2 (1000 rows)
+2024-12-19 12:56:43,039 - INFO - Saved batch 3 (1000 rows)
+2024-12-19 12:56:44,086 - INFO - Saved batch 4 (1000 rows)
+2024-12-19 12:56:45,131 - INFO - Saved batch 5 (1000 rows)
+2024-12-19 12:56:46,182 - INFO - Saved batch 6 (1000 rows)
+2024-12-19 12:56:47,228 - INFO - Saved batch 7 (1000 rows)
+2024-12-19 12:56:48,278 - INFO - Saved batch 8 (1000 rows)
+2024-12-19 12:56:49,323 - INFO - Saved batch 9 (1000 rows)
+2024-12-19 12:56:50,384 - INFO - Saved batch 10 (1000 rows)
+2024-12-19 12:56:51,434 - INFO - Saved batch 11 (1000 rows)
+2024-12-19 12:56:52,476 - INFO - Saved batch 12 (1000 rows)
+2024-12-19 12:56:53,520 - INFO - Saved batch 13 (1000 rows)
+2024-12-19 12:56:54,569 - INFO - Saved batch 14 (1000 rows)
+2024-12-19 12:56:55,614 - INFO - Saved batch 15 (1000 rows)
+2024-12-19 12:56:56,665 - INFO - Saved batch 16 (1000 rows)
+2024-12-19 12:56:57,714 - INFO - Saved batch 17 (1000 rows)
+2024-12-19 12:56:58,751 - INFO - Saved batch 18 (756 rows)
+2024-12-19 12:56:58,751 - INFO - Successfully saved 17756 rows to education_data
+2024-12-19 12:56:58,752 - INFO - Successfully inserted 2585 rows of education data
+2024-12-19 12:57:00,499 - INFO - Saved batch 1 (378 rows)
+2024-12-19 12:57:00,500 - INFO - Successfully saved 378 rows to economic_data
+2024-12-19 12:57:00,500 - INFO - Successfully inserted 378 rows of economic data
+2024-12-19 12:57:00,500 - ERROR - 数据库操作失败: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2024-12-19 13:53:20,353 - INFO - Getting education investment data...
+2024-12-19 13:53:20,358 - INFO - Using cached education investment data
+2024-12-19 13:53:20,358 - INFO - Getting economic indicators data...
+2024-12-19 13:53:20,359 - INFO - Using cached economic indicators data
+2024-12-19 13:53:20,359 - INFO - Getting education policy documents...
+2024-12-19 13:53:23,950 - INFO - Successfully connected to PostgreSQL
+2024-12-19 13:53:23,950 - INFO - Attempting to connect to MongoDB at 47.91.31.227:27017
+2024-12-19 13:53:25,422 - INFO - Successfully connected to MongoDB
+2024-12-19 13:53:28,059 - INFO - Tables created successfully
+2024-12-19 13:53:30,290 - INFO - Saved batch 1 (1000 rows)
+2024-12-19 13:53:31,524 - INFO - Saved batch 2 (1000 rows)
+2024-12-19 13:53:32,548 - INFO - Saved batch 3 (1000 rows)
+2024-12-19 13:53:33,564 - INFO - Saved batch 4 (1000 rows)
+2024-12-19 13:53:34,575 - INFO - Saved batch 5 (1000 rows)
+2024-12-19 13:53:35,602 - INFO - Saved batch 6 (1000 rows)
+2024-12-19 13:53:36,635 - INFO - Saved batch 7 (1000 rows)
+2024-12-19 13:53:37,641 - INFO - Saved batch 8 (1000 rows)
+2024-12-19 13:53:38,671 - INFO - Saved batch 9 (1000 rows)
+2024-12-19 13:53:39,686 - INFO - Saved batch 10 (1000 rows)
+2024-12-19 13:53:40,725 - INFO - Saved batch 11 (1000 rows)
+2024-12-19 13:53:41,729 - INFO - Saved batch 12 (1000 rows)
+2024-12-19 13:53:43,190 - INFO - Saved batch 13 (1000 rows)
+2024-12-19 13:53:44,214 - INFO - Saved batch 14 (1000 rows)
+2024-12-19 13:53:45,251 - INFO - Saved batch 15 (1000 rows)
+2024-12-19 13:53:46,258 - INFO - Saved batch 16 (1000 rows)
+2024-12-19 13:53:47,708 - INFO - Saved batch 17 (1000 rows)
+2024-12-19 13:53:48,735 - INFO - Saved batch 18 (756 rows)
+2024-12-19 13:53:48,735 - INFO - Successfully saved 17756 rows to education_data
+2024-12-19 13:53:48,737 - INFO - Successfully inserted 2585 rows of education data
+2024-12-19 13:53:50,459 - INFO - Saved batch 1 (378 rows)
+2024-12-19 13:53:50,459 - INFO - Successfully saved 378 rows to economic_data
+2024-12-19 13:53:50,459 - INFO - Successfully inserted 378 rows of economic data
+2024-12-19 13:53:50,459 - ERROR - 数据库操作失败: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2024-12-19 14:16:00,415 - INFO - Getting education investment data...
+2024-12-19 14:16:00,430 - INFO - Using cached education investment data
+2024-12-19 14:16:00,431 - INFO - Getting economic indicators data...
+2024-12-19 14:16:00,434 - INFO - Using cached economic indicators data
+2024-12-19 14:16:00,434 - INFO - Getting education policy documents...
+2024-12-19 14:16:04,399 - INFO - Successfully connected to PostgreSQL
+2024-12-19 14:16:04,400 - INFO - Attempting to connect to MongoDB at 47.91.31.227:27017
+2024-12-19 14:16:06,381 - INFO - Successfully connected to MongoDB
+2024-12-19 14:16:09,175 - INFO - Tables created successfully
+2024-12-19 14:16:11,544 - INFO - Saved batch 1 (1000 rows)
+2024-12-19 14:16:12,850 - INFO - Saved batch 2 (1000 rows)
+2024-12-19 14:16:13,939 - INFO - Saved batch 3 (1000 rows)
+2024-12-19 14:16:15,029 - INFO - Saved batch 4 (1000 rows)
+2024-12-19 14:16:16,545 - INFO - Saved batch 5 (1000 rows)
+2024-12-19 14:16:17,629 - INFO - Saved batch 6 (1000 rows)
+2024-12-19 14:16:18,729 - INFO - Saved batch 7 (1000 rows)
+2024-12-19 14:16:19,802 - INFO - Saved batch 8 (1000 rows)
+2024-12-19 14:16:20,865 - INFO - Saved batch 9 (1000 rows)
+2024-12-19 14:16:21,929 - INFO - Saved batch 10 (1000 rows)
+2024-12-19 14:16:22,992 - INFO - Saved batch 11 (1000 rows)
+2024-12-19 14:16:24,069 - INFO - Saved batch 12 (1000 rows)
+2024-12-19 14:16:25,132 - INFO - Saved batch 13 (1000 rows)
+2024-12-19 14:16:26,202 - INFO - Saved batch 14 (1000 rows)
+2024-12-19 14:16:27,302 - INFO - Saved batch 15 (1000 rows)
+2024-12-19 14:16:28,383 - INFO - Saved batch 16 (1000 rows)
+2024-12-19 14:16:29,447 - INFO - Saved batch 17 (1000 rows)
+2024-12-19 14:16:30,502 - INFO - Saved batch 18 (756 rows)
+2024-12-19 14:16:30,502 - INFO - Successfully saved 17756 rows to education_data
+2024-12-19 14:16:30,503 - INFO - Successfully inserted 2585 rows of education data
+2024-12-19 14:16:32,280 - INFO - Saved batch 1 (378 rows)
+2024-12-19 14:16:32,280 - INFO - Successfully saved 378 rows to economic_data
+2024-12-19 14:16:32,280 - INFO - Successfully inserted 378 rows of economic data
+2024-12-19 14:16:32,280 - ERROR - 数据库操作失败: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2024-12-19 14:18:22,429 - INFO - Getting education investment data...
+2024-12-19 14:18:22,445 - INFO - Using cached education investment data
+2024-12-19 14:18:22,445 - INFO - Getting economic indicators data...
+2024-12-19 14:18:22,449 - INFO - Using cached economic indicators data
+2024-12-19 14:18:22,450 - INFO - Getting education policy documents...
+2024-12-19 14:18:26,305 - INFO - Successfully connected to PostgreSQL
+2024-12-19 14:18:26,305 - INFO - Attempting to connect to MongoDB at 47.91.31.227:27017
+2024-12-19 14:18:27,816 - INFO - Successfully connected to MongoDB
+2024-12-19 14:18:31,771 - INFO - Tables created successfully
+2024-12-19 14:18:35,100 - INFO - Saved batch 1 (1000 rows)
+2024-12-19 14:18:36,955 - INFO - Saved batch 2 (1000 rows)
+2024-12-19 14:18:38,454 - INFO - Saved batch 3 (1000 rows)
+2024-12-19 14:18:39,950 - INFO - Saved batch 4 (1000 rows)
+2024-12-19 14:18:41,450 - INFO - Saved batch 5 (1000 rows)
+2024-12-19 14:18:42,951 - INFO - Saved batch 6 (1000 rows)
+2024-12-19 14:18:44,449 - INFO - Saved batch 7 (1000 rows)
+2024-12-19 14:18:45,944 - INFO - Saved batch 8 (1000 rows)
+2024-12-19 14:18:47,438 - INFO - Saved batch 9 (1000 rows)
+2024-12-19 14:18:48,937 - INFO - Saved batch 10 (1000 rows)
+2024-12-19 14:18:50,451 - INFO - Saved batch 11 (1000 rows)
+2024-12-19 14:18:51,950 - INFO - Saved batch 12 (1000 rows)
+2024-12-19 14:18:53,458 - INFO - Saved batch 13 (1000 rows)
+2024-12-19 14:18:54,965 - INFO - Saved batch 14 (1000 rows)
+2024-12-19 14:18:56,465 - INFO - Saved batch 15 (1000 rows)
+2024-12-19 14:18:57,978 - INFO - Saved batch 16 (1000 rows)
+2024-12-19 14:18:59,478 - INFO - Saved batch 17 (1000 rows)
+2024-12-19 14:19:00,962 - INFO - Saved batch 18 (756 rows)
+2024-12-19 14:19:00,962 - INFO - Successfully saved 17756 rows to education_data
+2024-12-19 14:19:00,965 - INFO - Successfully inserted 2585 rows of education data
+2024-12-19 14:19:03,501 - INFO - Saved batch 1 (378 rows)
+2024-12-19 14:19:03,501 - INFO - Successfully saved 378 rows to economic_data
+2024-12-19 14:19:03,502 - INFO - Successfully inserted 378 rows of economic data
+2024-12-19 14:19:03,502 - ERROR - 数据库操作失败: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
